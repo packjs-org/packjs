@@ -37,12 +37,12 @@ Check out packjs's quick [**Get Started**](https://www.tagee.cc/packjs/guides/st
 
 see packjs's configuration [**documents**](https://www.tagee.cc/packjs/configs)
 
-### License
+## License
 
-[MIT](https://github.com/tageecc/packjs/blob/HEAD/LICENSE)
+  [MIT](LICENSE)
 
 
-[npm]:https://img.shields.io/npm/v/packjs.svg
+[npm]: https://img.shields.io/npm/v/packjs.svg
 [npm-url]: https://npmjs.com/package/packjs
 [node]: https://img.shields.io/node/v/packjs.svg
 [node-url]: https://nodejs.org
