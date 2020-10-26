@@ -1,5 +1,7 @@
 language: node_js
 node_js:
   - "14"
-install: npm install dumi
+install:
+  - npm install
+  - npm install dumi
 script: npm run web-build

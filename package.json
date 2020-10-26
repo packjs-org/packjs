@@ -2,7 +2,11 @@
   "name": "packjs",
   "version": "0.1.1",
   "description": "an intelligent module bundler",
-  "keywords": ["webpack","pack","bundler"],
+  "keywords": [
+    "webpack",
+    "pack",
+    "bundler"
+  ],
   "bin": {
     "pack": "dist/bin/pack.js"
   },
