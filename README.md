@@ -9,7 +9,8 @@
 [![dw][dw]][dw-url]
 [![licenses][licenses]][licenses-url]
 [![PR's welcome][prs]][prs-url]
-  
+</div>
+
 [npm]: https://img.shields.io/npm/v/packjs.svg
 [npm-url]: https://npmjs.com/package/packjs
 [node]: https://img.shields.io/node/v/packjs.svg
@@ -20,7 +21,6 @@
 [licenses]: https://img.shields.io/npm/l/packjs
 [prs]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
 [prs-url]: https://webpack.js.org/contribute/
-</div>
 
 ## Install
 
