@@ -1,26 +1,20 @@
 <div align=center>
-<img src="https://gw.alicdn.com/tfs/TB1ILY9YUH1gK0jSZSyXXXtlpXa-742-996.png_200x0.jpg"/>
 </div>
-<h1 align=center>packjs</h1>
 
-<div align=center>
+
+<div align="center">
+  <a href="https://github.com/tageecc/packjs">
+    <img src="https://gw.alicdn.com/tfs/TB1ILY9YUH1gK0jSZSyXXXtlpXa-742-996.png_200x0.jpg"/>
+  </a>
+  <h1>packjs</h1>
+  
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
 [![dw][dw]][dw-url]
 [![licenses][licenses]][licenses-url]
 [![PR's welcome][prs]][prs-url]
-</div>
 
-[npm]: https://img.shields.io/npm/v/packjs.svg
-[npm-url]: https://npmjs.com/package/packjs
-[node]: https://img.shields.io/node/v/packjs.svg
-[node-url]: https://nodejs.org
-[dw]: https://img.shields.io/npm/dw/packjs
-[dw-url]: https://npm-stat.com/charts.html?package=packjs
-[licenses-url]: https://img.shields.io/npm/l/packjs
-[licenses]: https://img.shields.io/npm/l/packjs
-[prs]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
-[prs-url]: https://webpack.js.org/contribute/
+</div>
 
 ## Install
 
@@ -49,3 +43,14 @@ see packjs's configuration [**documents**](https://www.tagee.cc/packjs/configs)
 ## License
 
   [MIT](LICENSE)
+
+[npm]: https://img.shields.io/npm/v/packjs.svg
+[npm-url]: https://npmjs.com/package/packjs
+[node]: https://img.shields.io/node/v/packjs.svg
+[node-url]: https://nodejs.org
+[dw]: https://img.shields.io/npm/dw/packjs
+[dw-url]: https://npm-stat.com/charts.html?package=packjs
+[licenses-url]: https://img.shields.io/npm/l/packjs
+[licenses]: https://img.shields.io/npm/l/packjs
+[prs]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
+[prs-url]: https://webpack.js.org/contribute/
