@@ -1,9 +1,9 @@
 <div align=center>
 <img src="https://gw.alicdn.com/tfs/TB1ILY9YUH1gK0jSZSyXXXtlpXa-742-996.png_200x0.jpg"/>
 </div>
-<h1 style="align: center">packjs</h1>
+<h1 align=center>packjs</h1>
 
-<p style="align: center">
+<p align=center>
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
 [![dw][dw]][dw-url]
