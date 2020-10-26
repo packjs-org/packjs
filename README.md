@@ -3,7 +3,7 @@
 </div>
 <h1 align=center>packjs</h1>
 
-
+<div align=center>
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
 [![dw][dw]][dw-url]
@@ -20,8 +20,7 @@
 [licenses]: https://img.shields.io/npm/l/packjs
 [prs]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
 [prs-url]: https://webpack.js.org/contribute/
-
----
+</div>
 
 ## Install
 
