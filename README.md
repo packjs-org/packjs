@@ -1,8 +1,9 @@
-<p align="center">![](https://gw.alicdn.com/tfs/TB1ILY9YUH1gK0jSZSyXXXtlpXa-742-996.png_200x0.jpg)</p>
+<div style="align: center">
+<img src="https://gw.alicdn.com/tfs/TB1ILY9YUH1gK0jSZSyXXXtlpXa-742-996.png_200x0.jpg"/>
+</div>
+<h1 style="align: center">packjs</h1>
 
-<h1 align="center">packjs</h1>
-
-<p align="center">
+<p style="align: center">
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
 [![dw][dw]][dw-url]
@@ -41,7 +42,7 @@ see packjs's configuration [**documents**](https://www.tagee.cc/packjs/configs)
 [MIT](https://github.com/tageecc/packjs/blob/HEAD/LICENSE)
 
 
-[npm]: https://img.shields.io/npm/v/packjs.svg
+[npm]:https://img.shields.io/npm/v/packjs.svg
 [npm-url]: https://npmjs.com/package/packjs
 [node]: https://img.shields.io/node/v/packjs.svg
 [node-url]: https://nodejs.org
