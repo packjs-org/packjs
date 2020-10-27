@@ -12,5 +12,5 @@ run/
 dist/
 test/
 package-lock.json
-/src/.umi/
-/src/.umi-production/
+/dumi/.umi-production/
+/dumi/.umi/

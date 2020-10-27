@@ -1,5 +1,5 @@
 export default {
-    outputPath: 'docs',
+    outputPath: '../docs',
     publicPath: `/packjs/`,
     base: '/packjs/',
     mode: 'site',

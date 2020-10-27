@@ -15,7 +15,7 @@ jobs:
       - name: install
         run: npm i
       - name: build
-        run: ./node_modules/.bin/dumi build
+        run: APP_ROOT=dumi ./node_modules/.bin/dumi build
       - name: update file and push to remote
         run: |
           git config --global user.name "github-actions[bot]"
