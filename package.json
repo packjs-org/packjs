@@ -20,7 +20,8 @@
     "prepublishOnly": "npm run clean && npm run format &&  npm run build && echo Using TypeScript && tsc --version",
     "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "build": "tsc --pretty",
-    "watch": "npm run build -- --watch"
+    "watch": "npm run build -- --watch",
+    "test": "echo \"todo\""
   },
   "engines": {
     "node": ">=10.13.0"

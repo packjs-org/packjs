@@ -11,6 +11,8 @@
 [![npm][npm]][npm-url]
 [![node][node]][node-url]
 [![dw][dw]][dw-url]
+[![website][website]][website-url]
+[![ci][ci]][ci-url]
 [![licenses][licenses]][licenses-url]
 [![PR's welcome][prs]][prs-url]
 
@@ -52,5 +54,9 @@ see packjs's configuration [**documents**](https://www.tagee.cc/packjs/configs)
 [dw-url]: https://npm-stat.com/charts.html?package=packjs
 [licenses-url]: https://img.shields.io/npm/l/packjs
 [licenses]: https://img.shields.io/npm/l/packjs
+[ci]: https://github.com/tageecc/packjs/workflows/ci/badge.svg
+[ci-url]: https://github.com/tageecc/packjs/actions
+[website]: https://github.com/tageecc/packjs/workflows/website-builder/badge.svg
+[website-url]: https://github.com/tageecc/packjs/actions?query=workflow%3Awebsite-builder
 [prs]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
 [prs-url]: https://webpack.js.org/contribute/
