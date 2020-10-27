@@ -36,11 +36,11 @@ packjs is an intelligent bundler for modules. It can generate complex webpack co
 
 ## Get Started
 
-Check out packjs's quick [**Get Started**](https://www.tagee.cc/packjs/guides/start) guide and the [other guides](https://www.tagee.cc/packjs/guides/cli).
+Check out packjs's quick [**Get Started**](https://packjs.tagee.cc/guides/start) guide and the [other guides](https://packjs.tagee.cc/guides/cli).
 
 ## Configuration
 
-see packjs's configuration [**documents**](https://www.tagee.cc/packjs/configs)
+see packjs's configuration [**Documents**](https://packjs.tagee.cc/configs)
 
 ## License
 
