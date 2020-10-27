@@ -10,12 +10,16 @@ jobs:
     name: build website
     runs-on: ubuntu-latest
     steps:
+      - name: checkout
       - uses: actions/checkout@v2
-      - name: actions/setup-node
-          uses: actions/setup-node@v1.4.1
-          with:
-            node-version: '12'
-            check-latest: true
-      - run: sudo npm install -g dumi
+      - name: setup-node
+        uses: actions/setup-node@v1.4.1
+        with:
+          node-version: '14'
+          check-latest: true
+      - name: install
+        env:
+          NPM_CONFIG_PREFIX: '~/.npm-global'
+        run: npm install -g dumi
       - name: build website
         run: dumi build
