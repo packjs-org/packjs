@@ -16,6 +16,6 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm install
       - uses: JS-DevTools/npm-publish@v1
-          with:
-            token: ${{ secrets.npm_token }}
-            check-version: true
+        with:
+          token: ${{ secrets.npm_token }}
+          check-version: true
