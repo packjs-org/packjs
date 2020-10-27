@@ -44,7 +44,7 @@ const getHttpsOption = async (userConfig) => {
     } else {
         logger.warn('检测到当前host规则不存在');
         logger.info(`开始自动添加host映射：127.0.0.1 ${userConfig.host}`);
-        execFileSync('sudo', ['tee', '-a', HOST_FILE_PATH], { input: hostRule });
+        execFileSync('sudo', ['tee', '-a', HOST_FILE_PATH], { input: `${hostRule}\n` });
         storage.addHost(`127.0.0.1 ${userConfig.host}`);
         logger.success('hosts映射添加完成');
     }

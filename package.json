@@ -21,7 +21,6 @@
     "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "build": "tsc --pretty",
     "watch": "npm run build -- --watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "web": "dumi dev",
     "web-build": "dumi build"
   },
@@ -61,6 +60,7 @@
     "webpack-merge": "^5.1.4"
   },
   "devDependencies": {
+    "dumi": "^1.0.34",
     "prettier": "^2.1.2",
     "typescript": "^4.0.3"
   }
