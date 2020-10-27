@@ -27,6 +27,7 @@
   "engines": {
     "node": ">=10.13.0"
   },
+  "homepage": "https://packjs.tagee.cc",
   "repository": {
     "type": "git",
     "url": "https://github.com/webpack/webpack.git"
