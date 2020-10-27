@@ -11,4 +11,8 @@ export default {
         'en-US': [null, { title: 'GitHub', path: 'https://github.com/tageecc/packjs' }],
         'zh-CN': [null, { title: 'GitHub', path: 'https://github.com/tageecc/packjs' }],
     },
+    plugins: ['analytics'],
+    analytics: {
+        ga: 'G-ZNJQM7Q9TP',
+    },
 };
