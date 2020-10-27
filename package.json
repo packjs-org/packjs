@@ -20,9 +20,7 @@
     "prepublish": "npm run clean && npm run format &&  npm run build && echo Using TypeScript && tsc --version",
     "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "build": "tsc --pretty",
-    "watch": "npm run build -- --watch",
-    "web": "dumi dev",
-    "web-build": "dumi build"
+    "watch": "npm run build -- --watch"
   },
   "engines": {
     "node": ">=10.13.0"
