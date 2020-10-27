@@ -11,20 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Check for write permission
-      - name: Check user permission
-        id: check
-        uses: scherermichael-oss/action-has-permission@master
+      - name: actions/checkout
+        uses: actions/checkout@v2.0.0
+      - name: actions/setup-node
+        uses: actions/setup-node@v1.4.1
         with:
-          required-permission: write
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Checkout
-        uses: actions/checkout@master
-
-      - name: install deps
-        run: npm install -g dumi
+          node-version: "13.9.0"
+      - name: npm install
+        uses: jaid/action-npm-install@v1.2.1
 
       - name: build website
         run: dumi build
