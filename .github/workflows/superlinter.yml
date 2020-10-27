@@ -13,6 +13,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
       - name: install
-        run: npm i dumi
+        run: npm i
       - name: build
         run: ./node_modules/.bin/dumi build
