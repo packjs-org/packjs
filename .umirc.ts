@@ -1,5 +1,5 @@
 export default {
-    base: '/packjs',
+    base: '/',
     publicPath: `/`,
     exportStatic: {},
     dynamicImport: {},
