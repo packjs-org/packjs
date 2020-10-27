@@ -1,3 +1,5 @@
+const HOME_PATH = 'https://github.com/tageecc/packjs';
+
 export default {
     base: '/',
     publicPath: `/`,
@@ -8,8 +10,8 @@ export default {
     logo: 'https://gw.alicdn.com/tfs/TB1ILY9YUH1gK0jSZSyXXXtlpXa-742-996.png',
     favicon: 'https://gw.alicdn.com/tfs/TB1ILY9YUH1gK0jSZSyXXXtlpXa-742-996.png',
     navs: {
-        'en-US': [null, { title: 'GitHub', path: 'https://github.com/tageecc/packjs' }],
-        'zh-CN': [null, { title: 'GitHub', path: 'https://github.com/tageecc/packjs' }],
+        'en-US': [null, { title: 'GitHub', path: HOME_PATH }],
+        'zh-CN': [null, { title: 'GitHub', path: HOME_PATH }],
     },
     plugins: ['analytics'],
     analytics: {
