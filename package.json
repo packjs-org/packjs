@@ -1,6 +1,6 @@
 {
   "name": "packjs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "an intelligent module bundler",
   "keywords": [
     "webpack",
@@ -30,7 +30,7 @@
   "homepage": "https://packjs.tagee.cc",
   "repository": {
     "type": "git",
-    "url": "https://github.com/webpack/webpack.git"
+    "url": "https://github.com/tageecc/packjs.git"
   },
   "author": {
     "name": "tageecc",
