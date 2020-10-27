@@ -9,8 +9,8 @@ run/
 *.swp
 *.lock
 !.autod.conf.js
-dist/
+/dist/
 test/
 package-lock.json
-/dumi/.umi-production/
-/dumi/.umi/
+/src/.umi/
+/src/.umi-production/
