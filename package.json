@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "clean": "rimraf dist && rimraf coverage",
-    "prepublish": "npm run clean && npm run format &&  npm run build && echo Using TypeScript && tsc --version",
+    "prepublishOnly": "npm run clean && npm run format &&  npm run build && echo Using TypeScript && tsc --version",
     "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "build": "tsc --pretty",
     "watch": "npm run build -- --watch"
