@@ -13,7 +13,6 @@ export default {
         'en-US': [null, { title: 'GitHub', path: HOME_PATH }],
         'zh-CN': [null, { title: 'GitHub', path: HOME_PATH }],
     },
-    plugins: ['@umijs/plugin-analytics'],
     analytics: {
         ga: 'G-ZNJQM7Q9TP',
     },
