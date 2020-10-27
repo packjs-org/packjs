@@ -12,15 +12,8 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: setup-node
-        uses: actions/setup-node@v1.4.1
-        with:
-          node-version: '14'
-          check-latest: true
       - name: install
-        env:
-          NPM_CONFIG_PREFIX: '~/.npm-global'
-        run: npm install -g dumi
+        run: npm i -D dumi
       - name: build website
         run: ls
       - name: build website
