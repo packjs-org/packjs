@@ -14,4 +14,4 @@ test/
 package-lock.json
 /src/.umi/
 /src/.umi-production/
-/web
+/web/
