@@ -1,6 +1,6 @@
 export default {
     base: '/packjs',
-    publicPath: `/packjs/`,
+    publicPath: `/`,
     exportStatic: {},
     dynamicImport: {},
     mode: 'site',
