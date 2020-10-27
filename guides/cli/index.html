@@ -28,50 +28,10 @@
       gtag("config", "G-ZNJQM7Q9TP");
     </script>
     <title>命令行</title>
-  
-</head>
+  </head>
   <body>
-    <div id="root"><div class="__dumi-default-layout" data-show-sidemenu="true" data-show-slugs="true" data-site-mode="true" data-gapless="false"><div class="__dumi-default-navbar" data-mode="site"><button class="__dumi-default-navbar-toggle"></button><a class="__dumi-default-navbar-logo" style="background-image:url(&#x27;https://gw.alicdn.com/tfs/TB1ILY9YUH1gK0jSZSyXXXtlpXa-742-996.png&#x27;)" href="/">packjs</a><nav><div class="__dumi-default-search"><input type="search" class="__dumi-default-search-input" value=""/><ul></ul></div><a aria-current="page" class="active" href="/guides">指南</a><a href="/configs">配置</a></nav></div><div class="__dumi-default-menu" data-mode="site"><div class="__dumi-default-menu-inner"><div class="__dumi-default-menu-header"><a class="__dumi-default-menu-logo" style="background-image:url(&#x27;https://gw.alicdn.com/tfs/TB1ILY9YUH1gK0jSZSyXXXtlpXa-742-996.png&#x27;)" href="/"></a><h1>packjs</h1><p></p></div><div class="__dumi-default-menu-mobile-area"><ul class="__dumi-default-menu-nav-list"><li><a aria-current="page" class="active" href="/guides">指南</a></li><li><a href="/configs">配置</a></li></ul></div><ul class="__dumi-default-menu-list"><li><a href="/guides">介绍</a></li><li><a href="/guides/start">快速开始</a></li><li><a aria-current="page" class="active" href="/guides/cli">命令行</a></li></ul></div></div><ul class="__dumi-default-layout-toc" role="slug-list"><li title="dev" data-depth="2" class=""><a href="/guides/cli#dev"><span>dev</span></a></li><li title="build" data-depth="2" class=""><a href="/guides/cli#build"><span>build</span></a></li><li title="init" data-depth="2" class=""><a href="/guides/cli#init"><span>init</span></a></li><li title="host" data-depth="2" class=""><a href="/guides/cli#host"><span>host</span></a></li><li title="clear" data-depth="3" class=""><a href="/guides/cli#clear"><span>clear</span></a></li><li title="add" data-depth="3" class=""><a href="/guides/cli#add"><span>add</span></a></li></ul><div class="__dumi-default-layout-content"><div class="markdown"><h1 id="命令"><a aria-hidden="true" href="#命令"><span class="icon icon-link"></span></a>命令</h1><p>所有命令都可以通过 -h 或 --help 命令查看使用说明，如</p><div class="__dumi-default-code-block"><pre class="prism-code language-unknown"><button title="" type="button" class="__dumi-default-icon __dumi-default-btn-copy __dumi-default-code-block-copy-btn" data-clipboard-text="➜  [/Users/pack] pack -h
-
-      ___         ___           ___           ___
-     /  /\       /  /\         /  /\         /__/|
-    /  /::\     /  /::\       /  /:/        |  |:|
-   /  /:/\:\   /  /:/\:\     /  /:/         |  |:|
-  /  /:/~/:/  /  /:/~/::\   /  /:/  ___   __|  |:|
- /__/:/ /:/  /__/:/ /:/\:\ /__/:/  /  /\ /__/\_|:|____
- \  \:\/:/   \  \:\/:/__\/ \  \:\ /  /:/ \  \:\/:::::/
-  \  \::/     \  \::/       \  \:\  /:/   \  \::/~~~~
-   \  \:\      \  \:\        \  \:\/:/     \  \:\
-    \  \:\      \  \:\        \  \::/       \  \:\
-     \__\/       \__\/         \__\/         \__\/
-
-   release v0.0.64
-
-   packjs is a intelligently and lightweight packaging tool, powered by webpack.js
-
-==============================================================
-
-Usage: pack [options] [command]
-
-轻量webpack抽象工具，提供常用配置且动态依赖
-
-Options:
-  -v, --version       output the version number
-  -h, --help          display help for command
-
-Commands:
-  init [projectName]  脚手架
-  dev [options]       运行
-  build [options]     构建
-  host                host规则处理
-  help [command]      display help for command
-" data-status="copy"></button><div class="token-line"><span class="token plain">➜  [/Users/pack] pack -h</span></div><div class="token-line"><span class="token plain"></span></div><div class="token-line"><span class="token plain">      ___         ___           ___           ___</span></div><div class="token-line"><span class="token plain">     /  /\       /  /\         /  /\         /__/|</span></div><div class="token-line"><span class="token plain">    /  /::\     /  /::\       /  /:/        |  |:|</span></div><div class="token-line"><span class="token plain">   /  /:/\:\   /  /:/\:\     /  /:/         |  |:|</span></div><div class="token-line"><span class="token plain">  /  /:/~/:/  /  /:/~/::\   /  /:/  ___   __|  |:|</span></div><div class="token-line"><span class="token plain"> /__/:/ /:/  /__/:/ /:/\:\ /__/:/  /  /\ /__/\_|:|____</span></div><div class="token-line"><span class="token plain"> \  \:\/:/   \  \:\/:/__\/ \  \:\ /  /:/ \  \:\/:::::/</span></div><div class="token-line"><span class="token plain">  \  \::/     \  \::/       \  \:\  /:/   \  \::/~~~~</span></div><div class="token-line"><span class="token plain">   \  \:\      \  \:\        \  \:\/:/     \  \:\</span></div><div class="token-line"><span class="token plain">    \  \:\      \  \:\        \  \::/       \  \:\</span></div><div class="token-line"><span class="token plain">     \__\/       \__\/         \__\/         \__\/</span></div><div class="token-line"><span class="token plain"></span></div><div class="token-line"><span class="token plain">   release v0.0.64</span></div><div class="token-line"><span class="token plain"></span></div><div class="token-line"><span class="token plain">   packjs is a intelligently and lightweight packaging tool, powered by webpack.js</span></div><div class="token-line"><span class="token plain"></span></div><div class="token-line"><span class="token plain">==============================================================</span></div><div class="token-line"><span class="token plain"></span></div><div class="token-line"><span class="token plain">Usage: pack [options] [command]</span></div><div class="token-line"><span class="token plain"></span></div><div class="token-line"><span class="token plain">轻量webpack抽象工具，提供常用配置且动态依赖</span></div><div class="token-line"><span class="token plain"></span></div><div class="token-line"><span class="token plain">Options:</span></div><div class="token-line"><span class="token plain">  -v, --version       output the version number</span></div><div class="token-line"><span class="token plain">  -h, --help          display help for command</span></div><div class="token-line"><span class="token plain"></span></div><div class="token-line"><span class="token plain">Commands:</span></div><div class="token-line"><span class="token plain">  init [projectName]  脚手架</span></div><div class="token-line"><span class="token plain">  dev [options]       运行</span></div><div class="token-line"><span class="token plain">  build [options]     构建</span></div><div class="token-line"><span class="token plain">  host                host规则处理</span></div><div class="token-line"><span class="token plain">  help [command]      display help for command</span></div><div class="token-line"><span class="token plain"></span></div></pre></div><h2 id="dev"><a aria-hidden="true" href="#dev"><span class="icon icon-link"></span></a>dev</h2><p>使用：<code>pack dev [option]</code></p><p>本地构建运行</p><h2 id="build"><a aria-hidden="true" href="#build"><span class="icon icon-link"></span></a>build</h2><p>使用：<code>pack build [option]</code></p><p>编译产物</p><h2 id="init"><a aria-hidden="true" href="#init"><span class="icon icon-link"></span></a>init</h2><p>使用：<code>pack init [projectName]</code></p><p>脚手架</p><h2 id="host"><a aria-hidden="true" href="#host"><span class="icon icon-link"></span></a>host</h2><p>host 规则处理命令</p><h3 id="clear"><a aria-hidden="true" href="#clear"><span class="icon icon-link"></span></a>clear</h3><p>使用：<code>pack host clear</code></p><p>清空由 packjs 自动生成的 host 映射规则</p><h3 id="add"><a aria-hidden="true" href="#add"><span class="icon icon-link"></span></a>add</h3><p>使用：<code>pack host add [rules]</code></p><p>添加 host 映射规则</p></div><div class="__dumi-default-layout-footer-meta"><a target="_blank" rel="noopener noreferrer" href="https://github.com/tageecc/packjs/edit/master/docs/guides/cli.md">Edit this doc on GitHub<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="__dumi-default-external-link-icon"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a><span data-updated-text="Last Update: ">10/27/2020, 1:22:33 PM</span></div></div></div></div>
-	<script>
-  window.g_useSSR = true;
-  window.g_initialProps = {};
-	</script>
+    <div id="root"></div>
 
     <script src="/umi.js"></script>
-    <script src="/docs__guides__cli.md.js"></script>
   </body>
 </html>
