@@ -1,5 +1,4 @@
 const HOME_PATH = 'https://github.com/tageecc/packjs';
-
 export default {
     base: '/',
     publicPath: `/`,
@@ -13,8 +12,11 @@ export default {
         'en-US': [null, { title: 'GitHub', path: HOME_PATH }],
         'zh-CN': [null, { title: 'GitHub', path: HOME_PATH }],
     },
-    plugins: ['@umijs/plugin-analytics'],
-    analytics: {
-        ga: 'G-ZNJQM7Q9TP',
-    },
+    headScripts: [
+        'https://www.googletagmanager.com/gtag/js?id=G-ZNJQM7Q9TP',
+        `window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-ZNJQM7Q9TP');`,
+    ],
 };
