@@ -21,7 +21,7 @@
     "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "build": "tsc --pretty",
     "watch": "npm run build -- --watch",
-    "test": "echo \"todo\""
+    "test": "echo \"TODO\""
   },
   "engines": {
     "node": ">=10.13.0"
