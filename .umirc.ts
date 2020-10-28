@@ -1,6 +1,5 @@
 const HOME_PATH = 'https://github.com/tageecc/packjs';
 export default {
-    ssr: {},
     base: '/',
     publicPath: `/`,
     exportStatic: {},
