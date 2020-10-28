@@ -6,6 +6,7 @@ on:
       - 'docs/**'
       - 'public/**'
       - '.umirc.ts'
+      - 'package.json'
 
 jobs:
   deploy:
