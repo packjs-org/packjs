@@ -12,11 +12,14 @@ import { execFileSync } from 'child_process';
  * @param userConfig
  */
 export const generateDevServerOption = async (userConfig) => {
-    return Object.assign(DEFAULT_DEV_SERVER_CONFIG, await getHttpsOption(userConfig), userConfig.devServer, {
-        open: userConfig.open && 'Google Chrome',
-        host: userConfig.host,
-        https: userConfig.https,
-    });
+    return Object.assign(
+        DEFAULT_DEV_SERVER_CONFIG,
+        await getHttpsOption(userConfig),
+        userConfig.devServer,
+        userConfig.open && { open: 'Google Chrome' },
+        userConfig.host && { host: userConfig.host },
+        userConfig.https && { https: userConfig.https }
+    );
 };
 
 const getHttpsOption = async (userConfig) => {
