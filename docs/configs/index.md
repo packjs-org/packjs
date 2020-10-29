@@ -232,6 +232,10 @@ module.exports = {
 
 配置 webpack 的 `resolve.alias` 字段，[详情](https://www.webpackjs.com/configuration/resolve/#resolve-alias)
 
+> 注意：
+>
+> - 配置此字段后，若当前项目有 tsconfig.json 文件，会自动更新 paths 且设置 `baseUrl:'.'`，
+
 ## outputPath
 
 - Type: `string`

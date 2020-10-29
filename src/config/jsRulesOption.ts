@@ -16,39 +16,27 @@ export const generateJSRules = (userConfig, config) => {
         config.module.rules.push({
             test: /\.(js|jsx|ts|tsx)$/,
             exclude: /node_modules/,
-            use: [
-                {
-                    loader: 'babel-loader',
-                    options: { cacheDirectory: true, presets: babelPresets, plugins: babelPlugins },
-                },
-            ],
+            loader: 'babel-loader',
+            options: { cacheDirectory: true, presets: babelPresets, plugins: babelPlugins },
         });
         return;
     }
     if (options.ts) {
         [].push.apply(babelPresets, ['@babel/preset-typescript']);
         config.module.rules.push({
-            test: /\.(ts|tsx)$/,
+            test: /\.tsx?$/,
             exclude: /node_modules/,
-            use: [
-                {
-                    loader: 'babel-loader',
-                    options: { cacheDirectory: true, presets: babelPresets, plugins: babelPlugins },
-                },
-            ],
+            loader: 'babel-loader',
+            options: { cacheDirectory: true, presets: babelPresets, plugins: babelPlugins },
         });
     }
     if (options.jsx) {
         [].push.apply(babelPresets, ['@babel/preset-react']);
         config.module.rules.push({
-            test: /\.(js|jsx)$/,
+            test: /\.jsx?$/,
             exclude: /node_modules/,
-            use: [
-                {
-                    loader: 'babel-loader',
-                    options: { cacheDirectory: true, presets: babelPresets, plugins: babelPlugins },
-                },
-            ],
+            loader: 'babel-loader',
+            options: { cacheDirectory: true, presets: babelPresets, plugins: babelPlugins },
         });
     }
 };

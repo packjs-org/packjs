@@ -8,14 +8,14 @@ export interface IPackOptions {
     open: boolean;
     clean: boolean;
     html: object | boolean;
-    jsx: boolean;
     ts: boolean;
+    jsx: boolean;
     tsx: boolean;
     less: boolean;
     mobile: boolean | number;
     disableCSSModules: boolean;
     externals: any;
-    alias: object;
+    alias: any;
     outputPath: string;
     publicPath: string;
     postcssPlugins: any[];

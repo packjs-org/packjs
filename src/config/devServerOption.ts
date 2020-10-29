@@ -16,7 +16,7 @@ export const generateDevServerOption = async (userConfig) => {
         DEFAULT_DEV_SERVER_CONFIG,
         await getHttpsOption(userConfig),
         userConfig.devServer,
-        userConfig.open && { open: 'Google Chrome' },
+        { open: userConfig.open ? 'Google Chrome' : false },
         userConfig.host && { host: userConfig.host },
         userConfig.https && { https: userConfig.https }
     );

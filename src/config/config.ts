@@ -1,6 +1,8 @@
 import path from 'path';
 import chalk from 'chalk';
+import relative from 'relative';
 import { existsSync } from 'fs';
+import prettier from 'prettier';
 import merge from 'webpack-merge';
 import { lookUpFileNames } from '../util/util';
 import { depMap } from './configDepMap';
@@ -12,6 +14,7 @@ import { generateDevServerOption } from './devServerOption';
 import { generatePlugins } from './pluginsOption';
 import { generateCSSRules } from './cssRulesOption';
 import { generateJSRules } from './jsRulesOption';
+import * as fs from 'fs';
 
 export class Config {
     args = {};
@@ -69,9 +72,33 @@ export class Config {
             this.devServerOption = await generateDevServerOption(this.userConfig);
         }
 
-        await this.installDependencies();
+        await this.auto();
 
         this.getWebpackConfig();
+    }
+
+    async auto() {
+        //update tsconfig alias in ts mode
+        if (this.userConfig.alias && (this.userConfig.ts || this.userConfig.tsx)) {
+            logger.info('自动更新tsconfig.paths');
+            const tsconfigFilePath = path.resolve(process.cwd(), 'tsconfig.json');
+            if (!fs.existsSync(tsconfigFilePath)) {
+                logger.warn('tsconfig.json不存在，跳过更新alias');
+            } else {
+                const tsconfig = require(tsconfigFilePath);
+                tsconfig.compilerOptions = tsconfig.compilerOptions || {};
+                tsconfig.compilerOptions.baseUrl = '.';
+                tsconfig.compilerOptions.paths = tsconfig.compilerOptions.paths || {};
+                Object.entries(this.userConfig.alias).forEach(([k, v]) => {
+                    tsconfig.compilerOptions.paths[k + '/*'] = [relative.toBase(process.cwd(), v) + '/*'];
+                });
+                fs.writeFileSync(tsconfigFilePath, prettier.format(JSON.stringify(tsconfig), { parser: 'json' }));
+                logger.success('tsconfig.paths更新完成');
+            }
+        }
+
+        // install deps
+        await this.installDependencies();
     }
 
     autoGeneratorUserConfig() {
@@ -111,7 +138,7 @@ export class Config {
                 mode: this.env,
                 entry: this.userConfig.entry,
                 externals: this.userConfig.externals,
-                resolve: { alias: this.userConfig.externals },
+                resolve: { alias: this.userConfig.alias },
                 output: { path: this.userConfig.outputPath },
             },
             this.userConfig.webpack || {}

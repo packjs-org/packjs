@@ -52,7 +52,7 @@ export class Core {
         if (args.print) {
             console.log();
             logger.info('webpack配置详情如下:');
-            const webpackOptions = clone(compiler.options);
+            const webpackOptions = clone(this.config.webpackOption);
             webpackOptions.module.rules.map((rule) => {
                 rule.test = rule.test && rule.test.toString();
                 rule.exclude = rule.exclude && rule.exclude.toString();
