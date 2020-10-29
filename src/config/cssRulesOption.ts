@@ -34,7 +34,6 @@ function cssLoader(useCssModule) {
             modules: {
                 exportLocalsConvention: 'camelCase',
                 localIdentName: '[name]__[local]--[hash:base64:5]',
-                localsConvention: 'camelCase',
             },
         },
     };
