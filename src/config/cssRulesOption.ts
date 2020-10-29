@@ -12,14 +12,8 @@ export const generateCSSRules = (options, config) => {
     if (options.disableCSSModules) {
         config.module.rules.push({ test: /\.(css|less)$/, use: getLoaders(false) });
     } else {
-        config.module.rules.push({
-            test: /^((?!\.?global).)*css$/,
-            use: getLoaders(true),
-        });
-        config.module.rules.push({
-            test: /\.?global.css$/,
-            use: getLoaders(false),
-        });
+        config.module.rules.push({ test: /^((?!\.?global).)*(css|less)$/, use: getLoaders(true) });
+        config.module.rules.push({ test: /\.?global.(css|less)$/, use: getLoaders(false) });
     }
 };
 
