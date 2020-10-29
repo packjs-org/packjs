@@ -10,10 +10,22 @@ export const generateCSSRules = (options, config) => {
         [styleLoader(options), cssLoader(useCssModule), postcssLoader(options), lessLoader(options)].filter(Boolean);
 
     if (options.disableCSSModules) {
-        config.module.rules.push({ test: /\.(css|less)$/, use: getLoaders(false) });
+        config.module.rules.push({
+            test: /\.(css|less)$/,
+            use: getLoaders(false),
+            exclude: /node_modules/,
+        });
     } else {
-        config.module.rules.push({ test: /^((?!\.?global).)*(css|less)$/, use: getLoaders(true) });
-        config.module.rules.push({ test: /\.?global.(css|less)$/, use: getLoaders(false) });
+        config.module.rules.push({
+            test: /^((?!\.?global).)*(css|less)$/,
+            use: getLoaders(true),
+            exclude: /node_modules/,
+        });
+        config.module.rules.push({
+            test: /\.?global.(css|less)$/,
+            use: getLoaders(false),
+            exclude: /node_modules/,
+        });
     }
 };
 
