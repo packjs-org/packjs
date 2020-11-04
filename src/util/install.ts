@@ -2,7 +2,7 @@ import spawn from 'cross-spawn';
 import { cmdExists } from './util';
 
 export const install = async (names: string[]) => {
-    const npmClient = (await cmdExists('tnpm')) ? 'tnpm' : 'npm';
+    const npmClient = (await cmdExists('tnpm')) ? 'tnpm' : (await cmdExists('cnpm')) ? 'cnpm' : 'npm';
     return new Promise((resolve) =>
         spawn(npmClient, ['i', `--prefix ${process.cwd()}`, '--no-save'].concat(names)).on('close', resolve)
     );
