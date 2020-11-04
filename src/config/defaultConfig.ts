@@ -1,6 +1,6 @@
 import path from 'path';
 export const CONFIG_FILE = 'pack.js';
-export const DEFAULT_USER_CONFIG: any = { auto: true, clean: true, host: 'localhost', devServer: {} };
+export const DEFAULT_USER_CONFIG: any = { auto: true, clean: true, devServer: {} };
 export const DEFAULT_WEBPACK_CONFIG: any = {
     devtool: 'cheap-module-source-map',
     resolve: { extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.css', '.sass', '.scss', '.less'] },

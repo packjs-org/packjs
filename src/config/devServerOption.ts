@@ -26,7 +26,7 @@ const getHttpsOption = async (userConfig) => {
     const useHttps = userConfig.https || userConfig.devServer.https;
     if (!useHttps) return {};
     const httpsConfig: any = { https: true, port: 443 };
-    if (!VALID_DOMAIN.test(userConfig.host)) {
+    if (!userConfig.host || !VALID_DOMAIN.test(userConfig.host)) {
         return httpsConfig;
     }
 

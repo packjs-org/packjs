@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { spawn } from 'child_process';
+import which from 'which';
 /**
  * 文件名遍历
  * @param filePath 需要遍历的文件路径
@@ -25,5 +25,5 @@ export function lookUpFileNames(filePath, filenames: string[] = []): string[] {
  * @param cmd
  */
 export const cmdExists = async (cmd: string) => {
-    return new Promise((resolve) => spawn('type', [cmd]).on('close', (code) => resolve(!code)));
+    return !!which.sync(cmd, { nothrow: true });
 };
