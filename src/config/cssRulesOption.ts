@@ -17,12 +17,12 @@ export const generateCSSRules = (options, config) => {
         });
     } else {
         config.module.rules.push({
-            test: /^((?!\.?global).)*(css|less)$/,
+            test: /\.?global.(css|less)$/,
             use: getLoaders(true),
             exclude: /node_modules/,
         });
         config.module.rules.push({
-            test: /\.?global.(css|less)$/,
+            test: /^((?!\.?global).)*(css|less)$/,
             use: getLoaders(false),
             exclude: /node_modules/,
         });
