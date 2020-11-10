@@ -18,7 +18,11 @@ export const DEFAULT_DEV_SERVER_CONFIG: any = {
     stats: { colors: true },
     historyApiFallback: true,
     overlay: { errors: true },
-    headers: { 'Access-Control-Allow-Origin': '*' },
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+        'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+    },
     contentBase: path.join(process.cwd(), './public'),
     watchOptions: { aggregateTimeout: 300, poll: 1000 },
 };
