@@ -5,14 +5,31 @@
  */
 export const generateJSRules = (userConfig, config) => {
     const options = userConfig;
+    const extraBabelPresets = options.extraBabelPresets || [];
+    const extraBabelPlugins = options.extraBabelPlugins || [];
+    const babelPresets = [];
+    const babelPlugins = [];
 
-    const babelPresets: any = ['@babel/preset-env'];
-    const babelPlugins: any = [['@babel/plugin-transform-runtime']];
+    if (extraBabelPresets.toString().indexOf('@babel/preset-env') === -1) {
+        babelPresets.push('@babel/preset-env');
+    }
 
-    [].push.apply(babelPlugins, options.extraBabelPlugins || []);
+    if (extraBabelPlugins.toString().indexOf('@babel/plugin-transform-runtime') === -1) {
+        babelPlugins.push(['@babel/plugin-transform-runtime']);
+    }
+
+    [].push.apply(babelPresets, extraBabelPresets);
+    [].push.apply(babelPlugins, extraBabelPlugins);
 
     if ((options.ts && options.jsx) || options.tsx) {
-        [].push.apply(babelPresets, ['@babel/preset-react', '@babel/preset-typescript']);
+        if (babelPresets.toString().indexOf('@babel/preset-react') === -1) {
+            babelPresets.push('@babel/preset-react');
+        }
+
+        if (babelPresets.toString().indexOf('@babel/preset-typescript') === -1) {
+            babelPresets.push('@babel/preset-typescript');
+        }
+
         config.module.rules.push({
             test: /\.(js|jsx|ts|tsx)$/,
             exclude: /node_modules/,
@@ -22,7 +39,10 @@ export const generateJSRules = (userConfig, config) => {
         return;
     }
     if (options.ts) {
-        [].push.apply(babelPresets, ['@babel/preset-typescript']);
+        if (babelPresets.toString().indexOf('@babel/preset-typescript') === -1) {
+            babelPresets.push('@babel/preset-typescript');
+        }
+
         config.module.rules.push({
             test: /\.tsx?$/,
             exclude: /node_modules/,
@@ -31,7 +51,10 @@ export const generateJSRules = (userConfig, config) => {
         });
     }
     if (options.jsx) {
-        [].push.apply(babelPresets, ['@babel/preset-react']);
+        if (babelPresets.toString().indexOf('@babel/preset-react') === -1) {
+            babelPresets.push('@babel/preset-react');
+        }
+
         config.module.rules.push({
             test: /\.jsx?$/,
             exclude: /node_modules/,

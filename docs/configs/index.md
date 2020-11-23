@@ -42,7 +42,7 @@ webpack entry points 配置，详细 [entry points](https://www.webpackjs.com/co
 
 当 `https` 设置为 `true` 且配置的 `host` 字段为通用域名时，packjs 会开启 `https 模式`，自动生成该 host 的 https 证书并添加到系统中，且自动创建 host 规则`127.0.0.1 host`添加到系统 hosts 表中。
 
-> 注意：：
+> 注意：
 >
 > - 若运行命令为非 sudo 模式，运行过程中进程会中断等待授权。
 > - 若当前 host 规则已存在系统 hosts 表中，packjs 不会做其他操作
@@ -156,7 +156,7 @@ module.exports = {
 };
 ```
 
-> 注意
+> 注意：
 >
 > - 若同时开启`ts`和`jsx`，则会自动合并二者配置，开发者无需关心
 
@@ -268,12 +268,20 @@ module.exports = {
 
 配置额外的 `babel-loader` 的`options.presets`字段，[详情](https://www.npmjs.com/package/babel-loader)
 
+> 提示：
+>
+> 可以通过此字段覆盖 packjs 默认的 BabelPresets，如 extraBabelPresets=[[ '@babel/preset-env', { "targets": "> 5%" } ]]
+
 ## extraBabelPlugins
 
 - Type: `string[]`
 - Default: `[]`
 
 配置额外的 `babel-loader` 的`options.plugins`字段，[详情](https://www.npmjs.com/package/babel-loader)
+
+> 提示：
+>
+> 可以通过此字段覆盖 packjs 默认的 BabelPlugins，如 extraBabelPlugins=[[ "@babel/plugin-transform-runtime", { "absoluteRuntime": false } ]]
 
 ## devServer
 

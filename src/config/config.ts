@@ -15,6 +15,7 @@ import { generatePlugins } from './pluginsOption';
 import { generateCSSRules } from './cssRulesOption';
 import { generateJSRules } from './jsRulesOption';
 import * as fs from 'fs';
+import {generateFileRules} from "./fileRulesOption";
 
 export class Config {
     args = {};
@@ -130,7 +131,7 @@ export class Config {
         generatePlugins(this.userConfig, this.config);
         generateJSRules(this.userConfig, this.config);
         generateCSSRules({ ...this.userConfig, isDev: this.isDev }, this.config);
-
+        generateFileRules(this.userConfig, this.config);
         this.webpackOption = merge(
             DEFAULT_WEBPACK_CONFIG,
             this.config,
