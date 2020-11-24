@@ -7,9 +7,12 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
  */
 export const generateCSSRules = (options, config) => {
     const getLoaders = (useCssModule) =>
-        [styleLoader(options.isDev), cssLoader(useCssModule), postcssLoader(options), lessLoader(options)].filter(
-            Boolean
-        );
+        [
+            styleLoader(options.isDev),
+            cssLoader(useCssModule),
+            postcssLoader(options),
+            options.less && lessLoader(),
+        ].filter(Boolean);
 
     if (options.disableCSSModules) {
         config.module.rules.push({
@@ -31,23 +34,21 @@ export const generateCSSRules = (options, config) => {
     }
 };
 
-export function styleLoader(isDev) {
+export function styleLoader(isDev?) {
     return isDev ? 'style-loader' : MiniCssExtractPlugin.loader;
 }
-export function cssLoader(useCssModule) {
-    if (useCssModule) return 'css-loader';
-    return {
-        loader: 'css-loader',
-        options: {
-            modules: {
-                exportLocalsConvention: 'camelCase',
-                localIdentName: '[name]__[local]--[hash:base64:5]',
-            },
-        },
+export function cssLoader(options?) {
+    if (!options || !options.modules) return 'css-loader';
+    options = options || {};
+    options.modules = options.modules || {
+        exportLocalsConvention: 'camelCase',
+        localIdentName: '[name]__[local]--[hash:base64:5]',
     };
+    return { loader: 'css-loader', options };
 }
 
-export function postcssLoader(options) {
+export function postcssLoader(options?) {
+    options = options || {};
     const postCssLoader = {
         loader: 'postcss-loader',
         options: { postcssOptions: { plugins: options.postcssPlugins || [] } },
@@ -70,6 +71,6 @@ export function postcssLoader(options) {
     return postCssLoader.options.postcssOptions.plugins.length && postCssLoader;
 }
 
-export function lessLoader(options) {
-    return options.less && 'less-loader';
+export function lessLoader(options = {}) {
+    return { loader: 'less-loader', options };
 }
