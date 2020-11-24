@@ -23,12 +23,12 @@ export const generateCSSRules = (options, config) => {
     } else {
         config.module.rules.push({
             test: /\.?global.(css|less)$/,
-            use: getLoaders(true),
+            use: getLoaders(false),
             exclude: /node_modules/,
         });
         config.module.rules.push({
             test: /^((?!\.?global).)*(css|less)$/,
-            use: getLoaders(false),
+            use: getLoaders(true),
             exclude: /node_modules/,
         });
     }
