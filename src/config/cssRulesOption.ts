@@ -37,21 +37,17 @@ export const generateCSSRules = (options, config) => {
 export function styleLoader(isDev?) {
     return isDev ? 'style-loader' : MiniCssExtractPlugin.loader;
 }
-export function cssLoader(useCssModule, options = {}) {
-    if (!useCssModule)
-        return {
-            loader: 'css-loader',
-            options: options,
-        };
-    return {
-        loader: 'css-loader',
-        options: options || {
-            modules: {
-                exportLocalsConvention: 'camelCase',
-                localIdentName: '[name]__[local]--[hash:base64:5]',
-            },
-        },
-    };
+export function cssLoader(useCssModule, options?) {
+    const _options =
+        options || useCssModule
+            ? {
+                  modules: {
+                      exportLocalsConvention: 'camelCase',
+                      localIdentName: '[name]__[local]--[hash:base64:5]',
+                  },
+              }
+            : {};
+    return { loader: 'css-loader', options: _options };
 }
 
 export function postcssLoader(options?) {
