@@ -7,7 +7,9 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
  */
 export const generateCSSRules = (options, config) => {
     const getLoaders = (useCssModule) =>
-        [styleLoader(options), cssLoader(useCssModule), postcssLoader(options), lessLoader(options)].filter(Boolean);
+        [styleLoader(options.isDev), cssLoader(useCssModule), postcssLoader(options), lessLoader(options)].filter(
+            Boolean
+        );
 
     if (options.disableCSSModules) {
         config.module.rules.push({
@@ -29,10 +31,10 @@ export const generateCSSRules = (options, config) => {
     }
 };
 
-function styleLoader(options) {
-    return options.isDev ? 'style-loader' : MiniCssExtractPlugin.loader;
+export function styleLoader(isDev) {
+    return isDev ? 'style-loader' : MiniCssExtractPlugin.loader;
 }
-function cssLoader(useCssModule) {
+export function cssLoader(useCssModule) {
     if (useCssModule) return 'css-loader';
     return {
         loader: 'css-loader',
@@ -45,7 +47,7 @@ function cssLoader(useCssModule) {
     };
 }
 
-function postcssLoader(options) {
+export function postcssLoader(options) {
     const postCssLoader = {
         loader: 'postcss-loader',
         options: { postcssOptions: { plugins: options.postcssPlugins || [] } },
@@ -68,6 +70,6 @@ function postcssLoader(options) {
     return postCssLoader.options.postcssOptions.plugins.length && postCssLoader;
 }
 
-function lessLoader(options) {
+export function lessLoader(options) {
     return options.less && 'less-loader';
 }
