@@ -9,7 +9,16 @@ export const generateCSSRules = (options, config) => {
     const getLoaders = (useCssModule) =>
         [
             styleLoader(options.isDev),
-            cssLoader(useCssModule),
+            cssLoader(
+                useCssModule
+                    ? {
+                          modules: {
+                              exportLocalsConvention: 'camelCase',
+                              localIdentName: '[name]__[local]--[hash:base64:5]',
+                          },
+                      }
+                    : {}
+            ),
             postcssLoader(options),
             options.less && lessLoader(),
         ].filter(Boolean);
@@ -21,14 +30,16 @@ export const generateCSSRules = (options, config) => {
             exclude: /node_modules/,
         });
     } else {
+        // filename include global keyword
         config.module.rules.push({
-            test: /\.?global.(css|less)$/,
-            use: getLoaders(false),
+            test: /\.global\.(css|less)$/,
+            use: getLoaders(true),
             exclude: /node_modules/,
         });
+        // filename exclude global keyword
         config.module.rules.push({
             test: /^((?!\.?global).)*(css|less)$/,
-            use: getLoaders(true),
+            use: getLoaders(false),
             exclude: /node_modules/,
         });
     }
@@ -37,21 +48,11 @@ export const generateCSSRules = (options, config) => {
 export function styleLoader(isDev?) {
     return isDev ? 'style-loader' : MiniCssExtractPlugin.loader;
 }
-export function cssLoader(useCssModule, options?) {
-    const _options =
-        options || useCssModule
-            ? {
-                  modules: {
-                      exportLocalsConvention: 'camelCase',
-                      localIdentName: '[name]__[local]--[hash:base64:5]',
-                  },
-              }
-            : {};
-    return { loader: 'css-loader', options: _options };
+export function cssLoader(options) {
+    return { loader: 'css-loader', options };
 }
 
-export function postcssLoader(options?) {
-    options = options || {};
+export function postcssLoader(options = {} as any) {
     const postCssLoader = {
         loader: 'postcss-loader',
         options: { postcssOptions: { plugins: options.postcssPlugins || [] } },
@@ -74,6 +75,6 @@ export function postcssLoader(options?) {
     return postCssLoader.options.postcssOptions.plugins.length && postCssLoader;
 }
 
-export function lessLoader(options = {}) {
+export function lessLoader(options?) {
     return { loader: 'less-loader', options };
 }
