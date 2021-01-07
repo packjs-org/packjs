@@ -68,7 +68,7 @@
     "which": "^2.0.2"
   },
   "devDependencies": {
-    "dumi": "^1.0.34",
+    "dumi": "1.0.34",
     "typescript": "^4.0.3"
   }
 }
