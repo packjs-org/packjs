@@ -15,7 +15,7 @@ import { generatePlugins } from './pluginsOption';
 import { generateCSSRules } from './cssRulesOption';
 import { generateJSRules } from './jsRulesOption';
 import * as fs from 'fs';
-import {generateFileRules} from "./fileRulesOption";
+import { generateFileRules } from './fileRulesOption';
 
 export class Config {
     args = {};
@@ -75,7 +75,7 @@ export class Config {
 
         await this.auto();
 
-        this.getWebpackConfig();
+        await this.getWebpackConfig();
     }
 
     async auto() {
@@ -127,7 +127,7 @@ export class Config {
         return tmpConfig;
     }
 
-    getWebpackConfig() {
+    async getWebpackConfig() {
         generatePlugins(this.userConfig, this.config);
         generateJSRules(this.userConfig, this.config);
         generateCSSRules({ ...this.userConfig, isDev: this.isDev }, this.config);
@@ -144,6 +144,10 @@ export class Config {
             },
             this.userConfig.webpack || {}
         );
+
+        if (typeof this.userConfig.before === 'function') {
+            this.webpackOption = await this.userConfig.before(this.webpackOption);
+        }
     }
 
     async installDependencies() {

@@ -21,6 +21,7 @@ export interface IPackOptions {
     postcssPlugins: any[];
     extraBabelPresets: [];
     extraBabelPlugins: [];
+    before: (config: IPackOptions) => Configuration;
     devServer: { [index: string]: any };
     webpack?: Configuration;
 }

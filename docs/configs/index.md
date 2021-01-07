@@ -283,6 +283,13 @@ module.exports = {
 >
 > 可以通过此字段覆盖 packjs 默认的 BabelPlugins，如 extraBabelPlugins=[[ "@babel/plugin-transform-runtime", { "absoluteRuntime": false } ]]
 
+## before
+
+- Type: `(config: IPackOptions) => Configuration`
+- Default: `undefined`
+
+在webpack配置之前，可以对配置进行重写，支持异步函数。
+
 ## devServer
 
 配置 webpack 的 devServer，会和上文的 packjs 配置进行合并，优先级高于 packjs 配置，[详情](https://www.webpackjs.com/configuration/dev-server/#devserver)

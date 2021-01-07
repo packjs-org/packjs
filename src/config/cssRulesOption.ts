@@ -75,6 +75,12 @@ export function postcssLoader(options = {} as any) {
     return postCssLoader.options.postcssOptions.plugins.length && postCssLoader;
 }
 
-export function lessLoader(options?) {
-    return { loader: 'less-loader', options };
+export function lessLoader(options = {}) {
+    return {
+        loader: 'less-loader',
+        options: {
+            lessOptions: { javascriptEnabled: true },
+            ...options,
+        },
+    };
 }
