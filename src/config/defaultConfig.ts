@@ -6,6 +6,8 @@ export const DEFAULT_WEBPACK_CONFIG: any = {
     resolve: { extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.css', '.sass', '.scss', '.less'] },
     plugins: [],
     module: { rules: [] },
+    watch: true,
+    watchOptions: { aggregateTimeout: 1000, ignored: 'node_modules/**' },
 };
 export const DEFAULT_DEV_SERVER_CONFIG: any = {
     hot: true,
@@ -23,5 +25,4 @@ export const DEFAULT_DEV_SERVER_CONFIG: any = {
         'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
     contentBase: path.join(process.cwd(), './public'),
-    watchOptions: { aggregateTimeout: 300, poll: 1000 },
 };
