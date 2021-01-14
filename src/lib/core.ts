@@ -80,7 +80,7 @@ export class Core {
     build = async (args) => {
         await this.common('production', args);
 
-        const compiler = webpack(this.config.webpackOption, () => {});
+        const compiler = webpack(this.config.webpackOption);
         if (args.print) {
             console.log();
             logger.info('webpack配置详情如下:');

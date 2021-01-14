@@ -134,6 +134,10 @@ export class Config {
         generateFileRules(this.userConfig, this.config);
         this.webpackOption = merge(
             DEFAULT_WEBPACK_CONFIG,
+            this.isDev && {
+                watch: true,
+                watchOptions: { aggregateTimeout: 1000, ignored: 'node_modules/**' },
+            },
             this.config,
             {
                 mode: this.env,

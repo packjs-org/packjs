@@ -6,8 +6,6 @@ export const DEFAULT_WEBPACK_CONFIG: any = {
     resolve: { extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.css', '.sass', '.scss', '.less'] },
     plugins: [],
     module: { rules: [] },
-    watch: true,
-    watchOptions: { aggregateTimeout: 1000, ignored: 'node_modules/**' },
 };
 export const DEFAULT_DEV_SERVER_CONFIG: any = {
     hot: true,

@@ -34,7 +34,6 @@ export const generateCSSRules = (options, config) => {
         config.module.rules.push({
             test: /\.global\.(css|less)$/,
             use: getLoaders(false),
-            exclude: /node_modules/,
         });
         // filename exclude global keyword
         config.module.rules.push({
