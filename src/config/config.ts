@@ -23,7 +23,7 @@ export class Config {
     env = 'development' as 'development' | 'production' | 'none';
     devServerOption;
     webpackOption;
-    userConfig: IPackOptions & Function;
+    userConfig = {} as IPackOptions & Function;
     config = { plugins: [], module: { rules: [] } };
 
     /**
