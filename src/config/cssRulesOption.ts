@@ -39,7 +39,6 @@ export const generateCSSRules = (options, config) => {
         config.module.rules.push({
             test: /^((?!\.?global).)*(css|less)$/,
             use: getLoaders(true),
-            exclude: /node_modules/,
         });
     }
 };
