@@ -33,13 +33,23 @@ export const generateCSSRules = (options, config) => {
         // filename include global keyword
         config.module.rules.push({
             test: /\.global\.(css|less)$/,
+            exclude: /node_modules/,
             use: getLoaders(false),
         });
         // filename exclude global keyword
         config.module.rules.push({
             test: /^((?!\.?global).)*(css|less)$/,
+            exclude: /node_modules/,
             use: getLoaders(true),
         });
+        // node_modules css file support without cssModules
+        if (!options.disableCSSInLib) {
+            config.module.rules.push({
+                test: /\.css$/,
+                include: /node_modules/,
+                use: getLoaders(false),
+            });
+        }
     }
 };
 

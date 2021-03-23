@@ -218,6 +218,14 @@ module.exports = {
 - 若样式文件名包含 global，则该样式文件禁用 cssModules
 - 若样式文件名不包含 global，则该样式文件默认开启 cssModules
 
+
+## disableCSSInLib
+
+- Type: `boolean`
+- Default: `false`
+
+默认情况下，packjs 会自动识别并打包node_modules的css文件，不使用CSSModule，特殊情况下，你可以用过此字段关闭这个功能。
+
 ## externals
 
 - Type: `string | array | object | function | regex`
