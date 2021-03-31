@@ -65,7 +65,6 @@ export class Config {
             ...DEFAULT_USER_CONFIG,
             ...this.autoGeneratorUserConfig(),
             ...this.userConfig,
-            ...{ host: this.userConfig.host?.trim().replace(/[\s;]/g, '') },
         };
 
         // devServerConfig

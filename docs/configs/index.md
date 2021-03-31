@@ -33,21 +33,6 @@ webpack entry points 配置，详细 [entry points](https://www.webpackjs.com/co
 
 开启 https 后，会自动设置 `webpack-dev-server` 的`port:443`，`https:true`，并以 https 的协议启动 dev 服务
 
-## host
-
-- Type: `string`
-- Default: undefined
-
-设置 `webpack-dev-server` 的`host`字段。
-
-当 `https` 设置为 `true` 且配置的 `host` 字段为通用域名时，packjs 会开启 `https 模式`，自动生成该 host 的 https 证书并添加到系统中，且自动创建 host 规则`127.0.0.1 host`添加到系统 hosts 表中。
-
-> 注意：
->
-> - 若运行命令为非 sudo 模式，运行过程中进程会中断等待授权。
-> - 若当前 host 规则已存在系统 hosts 表中，packjs 不会做其他操作
-> - 开发者可以通过`pack host clear`清空 packjs 自动生成的所有 host 规则
-
 ## open
 
 - Type: `boolean`
@@ -206,25 +191,19 @@ module.exports = {
 }
 ```
 
-## disableCSSModules
+## cssModules
 
 - Type: `boolean`
 - Default: `false`
 
-是否禁用[cssModules](https://github.com/css-modules/css-modules)。
+是否启用[cssModules](https://github.com/css-modules/css-modules)。
 
 注意：通常情况下，packjs 会通过文件名方式选择性的配置 cssModule，规则如下：
 
-- 若样式文件名包含 global，则该样式文件禁用 cssModules
-- 若样式文件名不包含 global，则该样式文件默认开启 cssModules
+- 若样式文件名包含 module，则该样式文件启用 cssModules
+- 若样式文件名不包含 module，则该样式文件关闭 cssModules
 
-
-## disableCSSInLib
-
-- Type: `boolean`
-- Default: `false`
-
-默认情况下，packjs 会自动识别并打包node_modules的css文件，不使用CSSModule，特殊情况下，你可以用过此字段关闭这个功能。
+若开启`cssModules`字段，则所有的文件都会启用 cssModules，无关文件名。
 
 ## externals
 
@@ -278,7 +257,7 @@ module.exports = {
 
 > 提示：
 >
-> 可以通过此字段覆盖 packjs 默认的 BabelPresets，如 extraBabelPresets=[[ '@babel/preset-env', { "targets": "> 5%" } ]]
+> 可以通过此字段覆盖 packjs 默认的 BabelPresets，如 extraBabelPresets=[['@babel/preset-env', { "targets": "> 5%" }]]
 
 ## extraBabelPlugins
 
@@ -289,14 +268,14 @@ module.exports = {
 
 > 提示：
 >
-> 可以通过此字段覆盖 packjs 默认的 BabelPlugins，如 extraBabelPlugins=[[ "@babel/plugin-transform-runtime", { "absoluteRuntime": false } ]]
+> 可以通过此字段覆盖 packjs 默认的 BabelPlugins，如 extraBabelPlugins=[["@babel/plugin-transform-runtime", { "absoluteRuntime": false }]]
 
 ## before
 
 - Type: `(config: IPackOptions) => Configuration`
 - Default: `undefined`
 
-在webpack配置之前，可以对配置进行重写，支持异步函数。
+在 webpack 配置之前，可以对配置进行重写，支持异步函数。
 
 ## devServer
 

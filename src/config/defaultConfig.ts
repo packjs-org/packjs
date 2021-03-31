@@ -12,7 +12,7 @@ export const DEFAULT_DEV_SERVER_CONFIG: any = {
     port: 3000,
     quiet: true,
     inline: true,
-    host: 'localhost',
+    host: '0.0.0.0',
     disableHostCheck: true,
     stats: { colors: true },
     historyApiFallback: true,

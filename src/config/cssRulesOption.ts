@@ -23,33 +23,22 @@ export const generateCSSRules = (options, config) => {
             options.less && lessLoader(),
         ].filter(Boolean);
 
-    if (options.disableCSSModules) {
+    if (options.cssModules) {
         config.module.rules.push({
             test: /\.(css|less)$/,
-            use: getLoaders(false),
-            exclude: /node_modules/,
-        });
-    } else {
-        // filename include global keyword
-        config.module.rules.push({
-            test: /\.global\.(css|less)$/,
-            exclude: /node_modules/,
-            use: getLoaders(false),
-        });
-        // filename exclude global keyword
-        config.module.rules.push({
-            test: /^((?!\.?global).)*(css|less)$/,
-            exclude: /node_modules/,
             use: getLoaders(true),
         });
-        // node_modules css file support without cssModules
-        if (!options.disableCSSInLib) {
-            config.module.rules.push({
-                test: /\.css$/,
-                include: /node_modules/,
-                use: getLoaders(false),
-            });
-        }
+    } else {
+        // filename exclude module keyword
+        config.module.rules.push({
+            test: /(?<!module)\.(css|less)$/,
+            use: getLoaders(false),
+        });
+        // filename include module keyword
+        config.module.rules.push({
+            test: /\.module\.(css|less)$/,
+            use: getLoaders(true),
+        });
     }
 };
 
