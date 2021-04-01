@@ -10,6 +10,7 @@ export const generateDevServerOption = async (userConfig) => {
         userConfig.devServer,
         { open: userConfig.open ? 'Google Chrome' : false },
         userConfig.host && { host: userConfig.host },
-        userConfig.https && { https: userConfig.https }
+        userConfig.https && { https: userConfig.https, port: 443 },
+        userConfig.port && { port: userConfig.port }
     );
 };
