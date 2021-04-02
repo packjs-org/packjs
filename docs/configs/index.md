@@ -193,7 +193,7 @@ module.exports = {
 
 ## cssModules
 
-- Type: `boolean`
+- Type: `boolean | object`
 - Default: `false`
 
 是否启用[cssModules](https://github.com/css-modules/css-modules)。
@@ -204,6 +204,17 @@ module.exports = {
 - 若样式文件名不包含 module，则该样式文件关闭 cssModules
 
 若开启`cssModules`字段，则所有的文件都会启用 cssModules，无关文件名。
+
+`cssModules`字段可以为具体的 cssModules 配置，如下：
+
+```json
+{
+  "cssModules": {
+    "exportLocalsConvention": "camelCase",
+    "localIdentName": "[name]__[local]--[hash:base64:5]"
+  }
+}
+```
 
 ## externals
 

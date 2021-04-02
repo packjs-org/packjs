@@ -1,6 +1,6 @@
 {
   "name": "packjs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "an intelligent module bundler",
   "keywords": [
     "webpack",

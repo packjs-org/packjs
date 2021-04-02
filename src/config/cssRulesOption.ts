@@ -6,46 +6,58 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
  * @param config webpack配置
  */
 export const generateCSSRules = (options, config) => {
-    const getLoaders = (useCssModule) =>
-        [
-            styleLoader(options.isDev),
-            cssLoader(
-                useCssModule
-                    ? {
-                          modules: {
-                              exportLocalsConvention: 'camelCase',
-                              localIdentName: '[name]__[local]--[hash:base64:5]',
-                          },
-                      }
-                    : {}
-            ),
-            postcssLoader(options),
-            options.less && lessLoader(),
-        ].filter(Boolean);
-
     if (options.cssModules) {
         config.module.rules.push({
-            test: /\.(css|less)$/,
-            use: getLoaders(true),
+            test: /\.css$/,
+            use: [styleLoader(options.isDev), cssLoader(options.cssModules), postcssLoader(options)],
         });
-    } else {
-        // filename exclude module keyword
+
+        if (!options.less) return;
+
         config.module.rules.push({
-            test: /(?<!module)\.(css|less)$/,
-            use: getLoaders(false),
+            test: /\.less$/,
+            use: [styleLoader(options.isDev), cssLoader(options.cssModules), postcssLoader(options), lessLoader()],
         });
-        // filename include module keyword
-        config.module.rules.push({
-            test: /\.module\.(css|less)$/,
-            use: getLoaders(true),
-        });
+
+        return;
     }
+
+    // filename exclude module keyword
+    config.module.rules.push({
+        test: /(?<!module)\.css$/,
+        use: [styleLoader(options.isDev), cssLoader(false), postcssLoader(options)],
+    });
+    // filename include module keyword
+    config.module.rules.push({
+        test: /\.module\.css$/,
+        use: [styleLoader(options.isDev), cssLoader(true), postcssLoader(options)],
+    });
+
+    if (!options.less) return;
+
+    config.module.rules.push({
+        test: /(?<!module)\.less$/,
+        use: [styleLoader(options.isDev), cssLoader(false), postcssLoader(options), lessLoader()],
+    });
+    config.module.rules.push({
+        test: /\.module\.less$/,
+        use: [styleLoader(options.isDev), cssLoader(true), postcssLoader(options), lessLoader()],
+    });
 };
 
 export function styleLoader(isDev?) {
     return isDev ? 'style-loader' : MiniCssExtractPlugin.loader;
 }
-export function cssLoader(options) {
+export function cssLoader(useCssModule) {
+    const options = {} as any;
+    if (useCssModule === true) {
+        options.modules = {
+            exportLocalsConvention: 'camelCase',
+            localIdentName: '[name]__[local]--[hash:base64:5]',
+        };
+    } else if (typeof useCssModule === 'object') {
+        options.modules = useCssModule;
+    }
     return { loader: 'css-loader', options };
 }
 
