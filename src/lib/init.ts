@@ -18,7 +18,7 @@ export default async (projectName) => {
             },
         ]);
         if (!confirm) {
-            logger.fatal('process aborted!', { simple: true });
+            logger.fatal('process aborted!');
             return;
         }
     }

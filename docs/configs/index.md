@@ -200,10 +200,13 @@ module.exports = {
 
 注意：通常情况下，packjs 会通过文件名方式选择性的配置 cssModule，规则如下：
 
-- 若样式文件名包含 module，则该样式文件启用 cssModules
-- 若样式文件名不包含 module，则该样式文件关闭 cssModules
+- 若样式文件名包含 module 关键字，则该样式文件启用 cssModules
+- 若样式文件名不包含 module 关键字，则该样式文件关闭 cssModules
 
-若开启`cssModules`字段，则所有的文件都会启用 cssModules，无关文件名。
+若开启`cssModules`字段，则所有的文件都会启用 cssModules，此时，是否启用cssModule规则如下：
+
+- 若样式文件名包含 global 关键字，则该样式文件关闭 cssModules
+- 若样式文件名不包含 global 关键字，则该样式文件启用 cssModules
 
 `cssModules`字段可以为具体的 cssModules 配置，如下：
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import program from 'commander';
-import { Core } from '../lib/core';
+import { Core } from '../lib';
 import init from '../lib/init';
 const pkg = require('../../package.json');
 const core = new Core();
@@ -15,6 +15,6 @@ program.command('host', 'host规则处理');
 
 program.parse(process.argv);
 
-// if (!program.args.length) {
-//     program.help();
-// }
+if (!program.args.length) {
+    program.help();
+}

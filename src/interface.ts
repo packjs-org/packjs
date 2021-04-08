@@ -1,6 +1,7 @@
 import { Configuration } from 'webpack';
 
 export interface IPackOptions {
+    mode: 'development' | 'production';
     entry: any;
     auto: boolean;
     https: boolean;

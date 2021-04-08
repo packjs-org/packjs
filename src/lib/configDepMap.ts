@@ -5,11 +5,11 @@ export interface IDepMap {
 export const depMap: { [k: string]: IDepMap } = {
     ts: {
         tip: 'ts编译',
-        dependencies: ['@babel/preset-env', '@babel/preset-typescript', '@babel/plugin-transform-runtime'],
+        dependencies: ['@babel/preset-env', '@babel/preset-typescript'],
     },
     jsx: {
         tip: 'jsx编译',
-        dependencies: ['@babel/preset-env', '@babel/preset-react', '@babel/plugin-transform-runtime'],
+        dependencies: ['@babel/preset-env', '@babel/preset-react'],
     },
     css: {
         tip: 'css编译',

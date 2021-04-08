@@ -7,12 +7,11 @@ import * as Debug from 'debug';
  * constant
  */
 const PREFIX = 'pack';
-const SEP = chalk.gray('·');
 
 class Logger {
     private spinner = ora();
     public formatter = (msg) => {
-        return `[${PREFIX}]: ` + format.apply(format, msg);
+        return chalk.gray(`[${PREFIX}]`) + ': ' + format.apply(format, msg);
     };
     public loading(...msg) {
         if (Debug.enabled('pack')) {

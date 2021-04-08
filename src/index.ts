@@ -1,1 +1,1 @@
-export * from './config/cssRulesOption';
+export * from './lib/getCSSRules';
