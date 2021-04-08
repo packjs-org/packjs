@@ -34,7 +34,7 @@ export default async (mode, args, userConfig) => {
                 ],
             },
             plugins: [
-                new WebpackBar({ }),
+                new WebpackBar({}),
                 new webpack.BannerPlugin(`made in ${getFormatterDate()} by packjs`),
                 new MiniCssExtractPlugin({ filename: '[name].css' }),
                 userConfig.html && new (require('html-webpack-plugin'))(userConfig.html !== true && userConfig.html),
@@ -44,7 +44,15 @@ export default async (mode, args, userConfig) => {
                 rules: [
                     { parser: { requireEnsure: false } },
                     {
-                        oneOf: [...getCSSRules(isDev, userConfig), ...getJSRules(isDev, userConfig)],
+                        oneOf: [
+                            {
+                                test: /\.(woff|woff2|eot|ttf|svg|jpg|gif|webp|png)(\?[a-z0-9]+)?$/,
+                                loader: 'url-loader',
+                                options: { limit: 1000 },
+                            },
+                            ...getCSSRules(isDev, userConfig),
+                            ...getJSRules(isDev, userConfig),
+                        ],
                     },
                 ],
             },
