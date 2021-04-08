@@ -20,8 +20,6 @@ import getUserConfig from './getUserConfig';
 import { depMap } from './configDepMap';
 import { checkInstall, install } from '../util/install';
 import chalk from 'chalk';
-import applyWebpackOptionsDefaults = webpack.config.applyWebpackOptionsDefaults;
-import getNormalizedWebpackOptions = webpack.config.getNormalizedWebpackOptions;
 
 export class Core {
     userConfig: IPackOptions & Function;

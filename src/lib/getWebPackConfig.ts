@@ -6,9 +6,6 @@ import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import { getCSSRules } from './getCSSRules';
 import { getJSRules } from './getJSRules';
 import { getFormatterDate } from '../util/util';
-import ProgressBarPlugin from 'progress-bar-webpack-plugin';
-import logger from '../util/logger';
-import chalk from 'chalk';
 import WebpackBar from 'webpackbar';
 
 export default async (mode, args, userConfig) => {
