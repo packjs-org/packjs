@@ -60,7 +60,14 @@ export const getCSSRules = (isDev, userConfig) => {
 };
 
 export function getStyleLoader(isDev?) {
-    return isDev ? 'style-loader' : MiniCssExtractPlugin.loader;
+    return isDev
+        ? 'style-loader'
+        : {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                  esModule: false,
+              },
+          };
 }
 export function getCSSLoader(cssLoader) {
     if (cssLoader === true) {

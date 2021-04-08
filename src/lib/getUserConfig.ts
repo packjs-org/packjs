@@ -5,12 +5,12 @@ import { lookUpFileNames } from '../util/util';
 
 export default async (mode, args) => {
     let userConfig;
-    logger.info('开始读取packjs配置');
+    logger.loading('正在读取packjs配置');
     const filePath = path.resolve('pack.js');
     if (!existsSync(filePath)) {
         logger.warn('packjs配置文件不存在，使用默认配置');
     } else {
-        logger.success('读取packjs配置完成');
+        logger.success('packjs配置读取完成');
         userConfig = require(filePath);
     }
 

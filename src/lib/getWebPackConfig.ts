@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import { merge } from 'webpack-merge';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
 import { getCSSRules } from './getCSSRules';
 import { getJSRules } from './getJSRules';
 import { getFormatterDate } from '../util/util';
@@ -35,6 +36,7 @@ export default async (mode, args, userConfig) => {
             },
             plugins: [
                 new WebpackBar({}),
+                new FriendlyErrorsPlugin({ clearConsole: false }),
                 new webpack.BannerPlugin(`made in ${getFormatterDate()} by packjs`),
                 new MiniCssExtractPlugin({ filename: '[name].css' }),
                 userConfig.html && new (require('html-webpack-plugin'))(userConfig.html !== true && userConfig.html),

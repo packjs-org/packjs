@@ -6,7 +6,6 @@ import rimraf from 'rimraf';
 import webpack from 'webpack';
 import prettier from 'prettier';
 import relative from 'relative';
-import readline from 'readline';
 import clone from 'lodash.clonedeep';
 import getRepoInfo from 'git-repo-info';
 import prettyOutput from 'prettyoutput';
@@ -60,10 +59,10 @@ export class Core {
      */
     async updatePackageVersion() {
         if (!(await cmdExists('tnpm'))) return;
-        logger.info('开始检查git分支版本信息');
+        logger.loading('正在检查git分支版本信息');
         const gitInfo = getRepoInfo();
         if (!gitInfo.branch?.startsWith('daily/')) {
-            logger.warn('git分支不合法或不存在，跳过更新version');
+            logger.warn('跳过更新package.version');
             return;
         }
         const version = gitInfo.branch.split('/')[1];
@@ -79,7 +78,7 @@ export class Core {
      * auto install dep
      */
     async installDependencies() {
-        logger.info('开始检查依赖项完整性');
+        logger.loading('正在检查依赖项完整性');
 
         // @ts-ignore
         const { html, cssModules, css, ts, tsx, jsx, mobile, less } = this.userConfig;
@@ -154,13 +153,11 @@ export class Core {
         const protocol = this.userConfig.https ? 'https' : 'http';
         const openUrl = `${protocol}://${devServerConfig.host}:${devServerConfig.port}`;
         compiler.hooks.done.tap('afterDone', () => {
-            readline.clearLine(process.stdout, 0);
-            readline.cursorTo(process.stdout, 0);
-
+            console.log();
             const url1 = `- 本地：${openUrl}`;
             const url2 = `- 局域网：${protocol}://${ip.address()}:${devServerConfig.port}`;
             logger.success('本地开发 server 启动完毕，调试入口链接: ');
-            logger.info('  ' + url1 + '\n  ' + url2, { simple: true });
+            logger.success('  ' + url1 + '\n  ' + url2, { simple: true });
         });
 
         const server = new WebpackDevServer(compiler, devServerConfig);
@@ -182,6 +179,7 @@ export class Core {
         }
 
         const outputPath = this.webpackConfig.output?.path || path.join(process.cwd(), 'dist');
+
         if (this.userConfig.clean && outputPath) {
             logger.loading('正在清理outputPath');
             rimraf.sync(outputPath);
