@@ -78,7 +78,7 @@ export class Core {
      * auto install dep
      */
     async installDependencies() {
-        logger.loading('正在检查依赖项完整性');
+        logger.info('正在检查依赖项完整性');
 
         // @ts-ignore
         const { html, cssModules, css, ts, tsx, jsx, mobile, less } = this.userConfig;

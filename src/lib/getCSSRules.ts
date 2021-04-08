@@ -7,17 +7,11 @@ export const getCSSRules = (isDev, userConfig) => {
     const { cssLoader, cssModules, less } = userConfig;
 
     // 默认支持node_modules css文件解析
-    const loaders: any[] = [
-        {
-            test: /\.css$/,
-            use: [getStyleLoader(isDev), getCSSLoader(false), getPostcssLoader(userConfig)].filter(Boolean),
-        },
-    ];
+    const loaders = [];
     if (cssModules) {
         // filename include global keyword
         loaders.push({
             test: /\.global\.(css|less)$/,
-            exclude: /node_modules/,
             use: [getStyleLoader(isDev), getCSSLoader(false), getPostcssLoader(userConfig), lessLoader(less)].filter(
                 Boolean
             ),
@@ -25,7 +19,6 @@ export const getCSSRules = (isDev, userConfig) => {
         // filename exclude global keyword
         loaders.push({
             test: /^((?!\.?global).)*(css|less)$/,
-            exclude: /node_modules/,
             use: [
                 getStyleLoader(isDev),
                 getCSSLoader(cssLoader || true),
@@ -39,7 +32,6 @@ export const getCSSRules = (isDev, userConfig) => {
     // filename exclude module keyword
     loaders.push({
         test: /(?<!module)\.(css|less)$/,
-        exclude: /node_modules/,
         use: [getStyleLoader(isDev), getCSSLoader(false), getPostcssLoader(userConfig), lessLoader(less)].filter(
             Boolean
         ),
@@ -47,7 +39,6 @@ export const getCSSRules = (isDev, userConfig) => {
     // filename include module keyword
     loaders.push({
         test: /\.module\.(css|less)$/,
-        exclude: /node_modules/,
         use: [
             getStyleLoader(isDev),
             getCSSLoader(cssLoader || true),
@@ -73,12 +64,7 @@ export function getCSSLoader(cssLoader) {
     if (cssLoader === true) {
         return {
             loader: 'css-loader',
-            options: {
-                modules: {
-                    exportLocalsConvention: 'camelCase',
-                    localIdentName: '[name]__[local]--[hash:base64:5]',
-                },
-            },
+            options: { modules: { localIdentName: '[name]__[local]--[hash:base64:5]' } },
         };
     }
     if (typeof cssLoader === 'object') {
