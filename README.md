@@ -3,9 +3,6 @@
 
 
 <div align="center">
-  <a href="https://github.com/tageecc/packjs">
-    <img src="https://gw.alicdn.com/tfs/TB1ILY9YUH1gK0jSZSyXXXtlpXa-742-996.png_200x0.jpg"/>
-  </a>
   <h1>packjs</h1>
   
 [![npm][npm]][npm-url]

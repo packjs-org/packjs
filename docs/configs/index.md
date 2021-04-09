@@ -198,7 +198,7 @@ module.exports = {
 
 是否启用[cssModules](https://github.com/css-modules/css-modules)。
 
-注意：通常情况下，packjs 会通过文件名方式选择性的配置 cssModule，规则如下：
+注意：通常情况下，packjs 会通过文件名方式选择性的配置 cssModule，默认不开启`cssModules`字段，规则如下：
 
 - 若样式文件名包含 module 关键字，则该样式文件启用 cssModules
 - 若样式文件名不包含 module 关键字，则该样式文件关闭 cssModules
@@ -213,11 +213,16 @@ module.exports = {
 ```json
 {
   "cssModules": {
-    "exportLocalsConvention": "camelCase",
     "localIdentName": "[name]__[local]--[hash:base64:5]"
   }
 }
 ```
+
+## cssLoader
+
+- Type: `object`
+
+自定义css-loader的配置，[详情](https://github.com/webpack-contrib/css-loader#options)
 
 ## externals
 
