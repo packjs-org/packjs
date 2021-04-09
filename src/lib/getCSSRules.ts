@@ -11,34 +11,45 @@ export const getCSSRules = (isDev, userConfig) => {
     if (cssModules) {
         // filename include global keyword
         loaders.push({
-            test: /\.global\.(css|less)$/,
-            use: [getStyleLoader(isDev), getCSSLoader(false), getPostcssLoader(userConfig), lessLoader(less)].filter(
-                Boolean
-            ),
+            test: /\.global\.css$/,
+            use: [getStyleLoader(isDev), getCSSLoader(false), getPostcssLoader(userConfig)].filter(Boolean),
         });
         // filename exclude global keyword
         loaders.push({
-            test: /^((?!\.?global).)*(css|less)$/,
-            use: [
-                getStyleLoader(isDev),
-                getCSSLoader(cssLoader || true),
-                getPostcssLoader(userConfig),
-                lessLoader(less),
-            ].filter(Boolean),
+            test: /^((?!\.?global).)*css$/,
+            use: [getStyleLoader(isDev), getCSSLoader(cssLoader || true), getPostcssLoader(userConfig)].filter(Boolean),
         });
+        if (less) {
+            loaders.push({
+                test: /\.global\.less$/,
+                use: [
+                    getStyleLoader(isDev),
+                    getCSSLoader(false),
+                    getPostcssLoader(userConfig),
+                    lessLoader(true),
+                ].filter(Boolean),
+            });
+            loaders.push({
+                test: /^((?!\.?global).)*less$/,
+                use: [
+                    getStyleLoader(isDev),
+                    getCSSLoader(cssLoader || true),
+                    getPostcssLoader(userConfig),
+                    lessLoader(true),
+                ].filter(Boolean),
+            });
+        }
 
         return loaders.reverse();
     }
     // filename exclude module keyword
     loaders.push({
-        test: /(?<!module)\.(css|less)$/,
-        use: [getStyleLoader(isDev), getCSSLoader(false), getPostcssLoader(userConfig), lessLoader(less)].filter(
-            Boolean
-        ),
+        test: /(?<!module)\.css$/,
+        use: [getStyleLoader(isDev), getCSSLoader(false), getPostcssLoader(userConfig)].filter(Boolean),
     });
     // filename include module keyword
     loaders.push({
-        test: /\.module\.(css|less)$/,
+        test: /\.module\.css$/,
         use: [
             getStyleLoader(isDev),
             getCSSLoader(cssLoader || true),
@@ -47,6 +58,23 @@ export const getCSSRules = (isDev, userConfig) => {
         ].filter(Boolean),
     });
 
+    if (less) {
+        loaders.push({
+            test: /(?<!module)\.less$/,
+            use: [getStyleLoader(isDev), getCSSLoader(false), getPostcssLoader(userConfig), lessLoader(less)].filter(
+                Boolean
+            ),
+        });
+        loaders.push({
+            test: /\.module\.less$/,
+            use: [
+                getStyleLoader(isDev),
+                getCSSLoader(cssLoader || true),
+                getPostcssLoader(userConfig),
+                lessLoader(less),
+            ].filter(Boolean),
+        });
+    }
     return loaders.reverse();
 };
 
