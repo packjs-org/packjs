@@ -1,4 +1,3 @@
-import ip from 'ip';
 import path from 'path';
 import fs from 'fs-extra';
 import morgan from 'morgan';
@@ -6,9 +5,7 @@ import rimraf from 'rimraf';
 import webpack from 'webpack';
 import prettier from 'prettier';
 import relative from 'relative';
-import clone from 'lodash.clonedeep';
 import getRepoInfo from 'git-repo-info';
-import prettyOutput from 'prettyoutput';
 import WebpackDevServer from 'webpack-dev-server';
 import { version } from '../../package.json';
 import { cmdExists } from '../util/util';
@@ -19,6 +16,7 @@ import getUserConfig from './getUserConfig';
 import { depMap } from './configDepMap';
 import { checkInstall, install } from '../util/install';
 import chalk from 'chalk';
+import * as util from 'util';
 
 export class Core {
     userConfig: IPackOptions & Function;
@@ -140,24 +138,18 @@ export class Core {
         if (args.print) {
             console.log();
             logger.info('webpack配置详情如下:');
-            const webpackOptions = clone(this.webpackConfig);
-            webpackOptions.module.rules.map((rule) => {
-                rule.test = rule.test && rule.test.toString();
-                rule.exclude = rule.exclude && rule.exclude.toString();
-            });
-            console.log(prettyOutput(webpackOptions, { maxDepth: 10 }));
+            logger.success(util.inspect(this.webpackConfig, false, null, true), { simple: true });
         }
 
-        const compiler = webpack(this.webpackConfig, () => {});
+        const compiler = webpack(this.webpackConfig, (err) => err && console.log(err.message));
         const devServerConfig = this.webpackConfig.devServer;
-        const protocol = this.userConfig.https ? 'https' : 'http';
-        const openUrl = `${protocol}://${devServerConfig.host}:${devServerConfig.port}`;
+
+        if (!compiler) {
+            logger.error('webpack running error!');
+            return;
+        }
         compiler.hooks.done.tap('afterDone', () => {
             console.log();
-            const url1 = `- 本地：${openUrl}`;
-            const url2 = `- 局域网：${protocol}://${ip.address()}:${devServerConfig.port}`;
-            logger.success('本地开发 server 启动完毕，调试入口链接: ');
-            logger.success('  ' + url1 + '\n  ' + url2, { simple: true });
         });
 
         const server = new WebpackDevServer(compiler, devServerConfig);
@@ -167,15 +159,11 @@ export class Core {
 
     build = async (args) => {
         await this.run('production', args);
+
         if (args.print) {
             console.log();
             logger.info('webpack配置详情如下:');
-            const webpackOptions = clone(this.webpackConfig);
-            webpackOptions.module.rules.map((rule) => {
-                rule.test = rule.test && rule.test.toString();
-                rule.exclude = rule.exclude && rule.exclude.toString();
-            });
-            console.log(prettyOutput(webpackOptions, { maxDepth: 10 }));
+            logger.success(util.inspect(this.webpackConfig, false, null, true), { simple: true });
         }
 
         const outputPath = this.webpackConfig.output?.path || path.join(process.cwd(), 'dist');

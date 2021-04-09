@@ -2,6 +2,7 @@ import logger from '../util/logger';
 import path from 'path';
 import { existsSync } from 'fs';
 import { lookUpFileNames } from '../util/util';
+import {merge} from "webpack-merge";
 
 export default async (mode, args) => {
     let userConfig;
@@ -20,19 +21,13 @@ export default async (mode, args) => {
     }
 
     if (typeof userConfig === 'function') {
-        userConfig = await userConfig(mode, {
-            ...args,
-            isDev: mode === 'development',
-            isProd: (process.env.BUILD_GIT_BRANCH || '').startsWith('publish'),
-        });
+        userConfig = await userConfig(mode, args);
     }
 
-    // userConfig
-    userConfig = Object.assign({ auto: true, clean: true }, userConfig);
+    userConfig = merge({ auto: true, clean: true }, userConfig);
     if (userConfig.auto) {
-        userConfig = Object.assign(autoGeneratorUserConfig(), userConfig);
+        userConfig = merge(autoGeneratorUserConfig(), userConfig);
     }
-
     return userConfig;
 };
 

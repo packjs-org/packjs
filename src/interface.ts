@@ -1,6 +1,6 @@
 import { Configuration } from 'webpack';
 
-export interface IPackOptions {
+export interface IPackOptions extends Configuration{
     mode: 'development' | 'production';
     entry: any;
     auto: boolean;
@@ -14,7 +14,8 @@ export interface IPackOptions {
     tsx: boolean;
     less: boolean;
     mobile: boolean | number;
-    disableCSSModules: boolean;
+    cssModules: boolean;
+    cssLoader: object;
     externals: any;
     alias: any;
     outputPath: string;
@@ -23,6 +24,4 @@ export interface IPackOptions {
     extraBabelPresets: [];
     extraBabelPlugins: [];
     before: (config: IPackOptions) => Configuration;
-    devServer: { [index: string]: any };
-    webpack?: Configuration;
 }

@@ -28,7 +28,7 @@ export const cmdExists = async (cmd: string) => {
     return !!which.sync(cmd, { nothrow: true });
 };
 
-export const getFormatterDate = () => {
+export function getFormatterDate() {
     const date = new Date();
     let year = date.getFullYear(); //年
     if (year < 1900) year = year + 1900;
@@ -43,4 +43,31 @@ export const getFormatterDate = () => {
     let second: any = date.getSeconds(); //秒
     if (second < 10) second = '0' + second;
     return `${year}-${month}-${day} ${hour}:${minute}:${second}${date.getMilliseconds()}`;
-};
+}
+
+export function ignoreExtConfiguration(options) {
+    const extConfiguration = [
+        'auto',
+        'https',
+        'host',
+        'open',
+        'clean',
+        'html',
+        'ts',
+        'jsx',
+        'tsx',
+        'less',
+        'mobile',
+        'cssModules',
+        'cssLoader',
+        'alias',
+        'outputPath',
+        'publicPath',
+        'postcssPlugins',
+        'extraBabelPresets',
+        'extraBabelPlugins',
+        'before',
+    ];
+    extConfiguration.forEach((key) => delete options[key]);
+    return options;
+}
