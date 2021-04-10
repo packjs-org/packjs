@@ -294,7 +294,7 @@ module.exports = {
 - Type: `(config: IPackOptions) => Configuration`
 - Default: `undefined`
 
-在 webpack 配置之前，可以对配置进行重写，支持异步函数。
+在 webpack 执行之前，可以对配置进行重写，支持异步函数。
 
 ## devServer
 

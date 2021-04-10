@@ -17,7 +17,11 @@ export default async (mode, args, userConfig) => {
     const port = userConfig.port || userConfig.devServer?.port || '3000';
     const url1 = `- 本地：${protocol}://${host}:${port}`;
     const url2 = `- 局域网：${protocol}://${ip.address()}:${port}`;
-    return ignoreExtConfiguration(
+
+    const moduleRules = userConfig?.module?.rules || [];
+    delete userConfig.module?.rules;
+
+    const webpackConfig = ignoreExtConfiguration(
         merge(
             {
                 mode,
@@ -69,6 +73,7 @@ export default async (mode, args, userConfig) => {
                         { parser: { requireEnsure: false } },
                         {
                             oneOf: [
+                                ...moduleRules,
                                 {
                                     test: /\.(woff|woff2|eot|ttf|svg|jpg|gif|webp|png)(\?[a-z0-9]+)?$/,
                                     loader: 'url-loader',
@@ -107,4 +112,9 @@ export default async (mode, args, userConfig) => {
             userConfig
         )
     );
+
+    if (typeof userConfig.before === 'function') {
+        return userConfig.before(webpackConfig);
+    }
+    return webpackConfig;
 };
