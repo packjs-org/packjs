@@ -295,11 +295,3 @@ module.exports = {
 - Default: `undefined`
 
 在 webpack 执行之前，可以对配置进行重写，支持异步函数。
-
-## devServer
-
-配置 webpack 的 devServer，会和上文的 packjs 配置进行合并，优先级高于 packjs 配置，[详情](https://www.webpackjs.com/configuration/dev-server/#devserver)
-
-## webpack
-
-webpack 配置，会和上文的 packjs 配置进行合并，优先级高于 packjs 配置，[详情](https://www.webpackjs.com/configuration/)
