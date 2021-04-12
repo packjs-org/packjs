@@ -1,14 +1,14 @@
 import ip from 'ip';
 import path from 'path';
-import webpack from 'webpack';
 import { merge } from 'webpack-merge';
+import WebpackBar from 'webpackbar';
+import TerserPlugin from 'terser-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
 import { getCSSRules } from './getCSSRules';
 import { getJSRules } from './getJSRules';
-import { getFormatterDate, ignoreExtConfiguration } from '../util/util';
-import WebpackBar from 'webpackbar';
+import { ignoreExtConfiguration } from '../util/util';
 
 export default async (mode, args, userConfig) => {
     const isDev = mode === 'development';
@@ -49,6 +49,10 @@ export default async (mode, args, userConfig) => {
                 optimization: {
                     minimize: !isDev,
                     minimizer: [
+                        new TerserPlugin({
+                            extractComments: false,
+                            terserOptions: { format: { comments: false } },
+                        }),
                         new CssMinimizerPlugin({
                             minimizerOptions: { preset: ['default', { discardComments: { removeAll: true } }] },
                         }),
@@ -56,14 +60,13 @@ export default async (mode, args, userConfig) => {
                 },
                 plugins: [
                     new WebpackBar({}),
+                    new MiniCssExtractPlugin({ filename: '[name].css' }),
                     new FriendlyErrorsPlugin({
-                        compilationSuccessInfo: {
+                        compilationSuccessInfo: isDev && {
                             messages: ['本地开发 server 启动完毕，调试入口链接: \n' + '  ' + url1 + '\n  ' + url2],
                         },
                         clearConsole: false,
                     }),
-                    new webpack.BannerPlugin(`made in ${getFormatterDate()} by packjs`),
-                    new MiniCssExtractPlugin({ filename: '[name].css' }),
                     userConfig.html &&
                         new (require('html-webpack-plugin'))(userConfig.html !== true && userConfig.html),
                 ].filter(Boolean),
