@@ -13,7 +13,7 @@ import { ignoreExtConfiguration } from '../util/util';
 export default async (mode, args, userConfig) => {
     const isDev = mode === 'development';
     const protocol = userConfig.https ? 'https' : 'http';
-    const host = userConfig.host || userConfig.devServer.host || '127.0.0.1';
+    const host = userConfig.host || userConfig.devServer?.host || '127.0.0.1';
     const port = userConfig.port || userConfig.devServer?.port || '3000';
     const url1 = `- 本地：${protocol}://${host}:${port}`;
     const url2 = `- 局域网：${protocol}://${ip.address()}:${port}`;
