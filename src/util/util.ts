@@ -36,6 +36,7 @@ export function ignoreExtConfiguration(options) {
         'open',
         'clean',
         'html',
+        'css',
         'ts',
         'jsx',
         'tsx',
