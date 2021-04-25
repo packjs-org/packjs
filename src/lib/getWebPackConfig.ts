@@ -10,11 +10,18 @@ import { getCSSRules } from './getCSSRules';
 import { getJSRules } from './getJSRules';
 import { ignoreExtConfiguration } from '../util/util';
 
+function getPort(userConfig) {
+    const https = userConfig.https;
+    const port = userConfig.prot || userConfig.devServer?.port || (https ? '443' : '');
+    if (port === '443' || port === '80') return '';
+    return port;
+}
+
 export default async (mode, args, userConfig) => {
     const isDev = mode === 'development';
     const protocol = userConfig.https ? 'https' : 'http';
     const host = userConfig.host || userConfig.devServer?.host || '127.0.0.1';
-    const port = userConfig.port || userConfig.devServer?.port || '3000';
+    const port = getPort(userConfig);
     const url1 = `- 本地：${protocol}://${host}:${port}`;
     const url2 = `- 局域网：${protocol}://${ip.address()}:${port}`;
 
@@ -91,7 +98,7 @@ export default async (mode, args, userConfig) => {
                 devServer: Object.assign(
                     {
                         hot: true,
-                        port: 3000,
+                        port: 80,
                         quiet: true,
                         inline: true,
                         host: '0.0.0.0',
