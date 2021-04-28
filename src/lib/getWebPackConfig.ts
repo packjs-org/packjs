@@ -80,7 +80,6 @@ export default async (mode, args, userConfig) => {
                 module: {
                     strictExportPresence: true,
                     rules: [
-                        { parser: { requireEnsure: false } },
                         {
                             oneOf: [
                                 ...moduleRules,
