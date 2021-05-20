@@ -1,20 +1,18 @@
 import ip from 'ip';
 import path from 'path';
-import { merge } from 'webpack-merge';
+import {merge} from 'webpack-merge';
 import WebpackBar from 'webpackbar';
 import TerserPlugin from 'terser-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
-import { getCSSRules } from './getCSSRules';
-import { getJSRules } from './getJSRules';
-import { ignoreExtConfiguration } from '../util/util';
+import {getCSSRules} from './getCSSRules';
+import {getJSRules} from './getJSRules';
+import {ignoreExtConfiguration} from '../util/util';
 
 function getPort(userConfig) {
     const https = userConfig.https;
-    const port = userConfig.prot || userConfig.devServer?.port || (https ? '443' : '');
-    if (port === '443' || port === '80') return '';
-    return port;
+    return userConfig.prot || userConfig.devServer?.port || (https ? '443' : '80');
 }
 
 export default async (mode, args, userConfig) => {
