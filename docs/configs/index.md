@@ -154,10 +154,10 @@ module.exports = {
 
 ## less
 
-- Type: `boolean`
+- Type: `boolean | object`
 - Default: `false`
 
-支持 less 文件编译
+支持 less 文件编译, 若less为object，则为less-loader的option配置。
 
 ## mobile
 
