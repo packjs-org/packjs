@@ -1,6 +1,6 @@
 import { Configuration } from 'webpack';
 
-export interface IPackOptions extends Configuration{
+export interface IPackOptions extends Configuration {
     mode: 'development' | 'production';
     entry: any;
     auto: boolean;

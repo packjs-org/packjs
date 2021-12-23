@@ -26,7 +26,7 @@ export const getCSSRules = (isDev, userConfig) => {
                     getStyleLoader(isDev),
                     getCSSLoader(false),
                     getPostcssLoader(userConfig),
-                    lessLoader(true,less!==true&&less),
+                    lessLoader(true, less !== true && less),
                 ].filter(Boolean),
             });
             loaders.push({
@@ -35,7 +35,7 @@ export const getCSSRules = (isDev, userConfig) => {
                     getStyleLoader(isDev),
                     getCSSLoader(cssLoader || true),
                     getPostcssLoader(userConfig),
-                    lessLoader(true,less!==true&&less),
+                    lessLoader(true, less !== true && less),
                 ].filter(Boolean),
             });
         }
@@ -54,16 +54,19 @@ export const getCSSRules = (isDev, userConfig) => {
             getStyleLoader(isDev),
             getCSSLoader(cssLoader || true),
             getPostcssLoader(userConfig),
-            lessLoader(less,less!==true&&less),
+            lessLoader(less, less !== true && less),
         ].filter(Boolean),
     });
 
     if (less) {
         loaders.push({
             test: /(?<!module)\.less$/,
-            use: [getStyleLoader(isDev), getCSSLoader(false), getPostcssLoader(userConfig), lessLoader(less,less!==true&&less)].filter(
-                Boolean
-            ),
+            use: [
+                getStyleLoader(isDev),
+                getCSSLoader(false),
+                getPostcssLoader(userConfig),
+                lessLoader(less, less !== true && less),
+            ].filter(Boolean),
         });
         loaders.push({
             test: /\.module\.less$/,
@@ -71,7 +74,7 @@ export const getCSSRules = (isDev, userConfig) => {
                 getStyleLoader(isDev),
                 getCSSLoader(cssLoader || true),
                 getPostcssLoader(userConfig),
-                lessLoader(less,less!==true&&less),
+                lessLoader(less, less !== true && less),
             ].filter(Boolean),
         });
     }
@@ -128,7 +131,9 @@ export function lessLoader(useLess, options = {}) {
     return {
         loader: 'less-loader',
         options: {
-            lessOptions: { javascriptEnabled: true },
+            ...{
+                lessOptions: { javascriptEnabled: true },
+            },
             ...options,
         },
     };

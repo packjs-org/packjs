@@ -2,7 +2,7 @@ import logger from '../util/logger';
 import path from 'path';
 import { existsSync } from 'fs';
 import { lookUpFileNames } from '../util/util';
-import {merge} from "webpack-merge";
+import { merge } from 'webpack-merge';
 
 export default async (mode, args) => {
     let userConfig;

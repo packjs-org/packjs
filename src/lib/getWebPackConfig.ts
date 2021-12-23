@@ -1,14 +1,14 @@
 import ip from 'ip';
 import path from 'path';
-import {merge} from 'webpack-merge';
+import { merge } from 'webpack-merge';
 import WebpackBar from 'webpackbar';
 import TerserPlugin from 'terser-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
-import {getCSSRules} from './getCSSRules';
-import {getJSRules} from './getJSRules';
-import {ignoreExtConfiguration} from '../util/util';
+import { getCSSRules } from './getCSSRules';
+import { getJSRules } from './getJSRules';
+import { ignoreExtConfiguration } from '../util/util';
 
 function getPort(userConfig) {
     const https = userConfig.https;
