@@ -1,6 +1,5 @@
 import path from 'path';
 import fs from 'fs-extra';
-import morgan from 'morgan';
 import rimraf from 'rimraf';
 import webpack from 'webpack';
 import prettier from 'prettier';
@@ -148,13 +147,8 @@ export class Core {
             logger.error('webpack running error!');
             return;
         }
-        compiler.hooks.done.tap('afterDone', () => {
-            console.log();
-        });
 
-        const server = new WebpackDevServer(compiler, devServerConfig);
-        server.app.use(morgan('short', { stream: { write: (line) => logger.info(line.slice(0, line.length - 1)) } }));
-        server.listen(devServerConfig.port, '0.0.0.0');
+        new WebpackDevServer(devServerConfig, compiler).start().then();
     };
 
     build = async (args) => {

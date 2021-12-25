@@ -1,6 +1,6 @@
 {
   "name": "packjs",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "an intelligent module bundler",
   "keywords": [
     "webpack",
@@ -40,13 +40,13 @@
   "license": "ISC",
   "dependencies": {
     "@babel/core": "7.13.14",
+    "@soda/friendly-errors-webpack-plugin": "^1.8.1",
     "babel-loader": "8.2.2",
     "chalk": "4.1.0",
     "commander": "7.2.0",
     "cross-spawn": "7.0.3",
     "css-minimizer-webpack-plugin": "1.3.0",
     "file-loader": "6.2.0",
-    "friendly-errors-webpack-plugin": "1.7.0",
     "fs-extra": "9.1.0",
     "git-repo-info": "2.1.1",
     "inquirer": "8.0.0",

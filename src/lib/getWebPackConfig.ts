@@ -1,14 +1,16 @@
 import ip from 'ip';
 import path from 'path';
+import morgan from 'morgan';
 import { merge } from 'webpack-merge';
 import WebpackBar from 'webpackbar';
 import TerserPlugin from 'terser-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-import FriendlyErrorsPlugin from 'friendly-errors-webpack-plugin';
+import FriendlyErrorsPlugin from '@soda/friendly-errors-webpack-plugin';
 import { getCSSRules } from './getCSSRules';
 import { getJSRules } from './getJSRules';
 import { ignoreExtConfiguration } from '../util/util';
+import logger from '../util/logger';
 
 function getPort(userConfig) {
     const https = userConfig.https;
@@ -21,7 +23,7 @@ export default async (mode, args, userConfig) => {
     const host = userConfig.host || userConfig.devServer?.host || '127.0.0.1';
     const port = getPort(userConfig);
     const url1 = `- 本地：${protocol}://${host}:${port}`;
-    const url2 = `- 局域网：${protocol}://${ip.address()}:${port}`;
+    const url2 = `- 局域网：${protocol}://${ip.address()}:${port}\n`;
 
     const moduleRules = userConfig?.module?.rules || [];
     delete userConfig.module?.rules;
@@ -92,27 +94,50 @@ export default async (mode, args, userConfig) => {
                         },
                     ],
                 },
+                infrastructureLogging: {
+                    level: 'none',
+                },
                 devServer: Object.assign(
                     {
-                        hot: true,
+                        hot: 'only',
                         port: 80,
-                        quiet: true,
-                        inline: true,
                         host: '0.0.0.0',
-                        disableHostCheck: true,
-                        stats: { colors: true },
+                        allowedHosts: 'all',
                         historyApiFallback: true,
-                        overlay: { errors: true },
+                        devMiddleware: {
+                            stats: { colors: true },
+                        },
+                        client: {
+                            logging: 'none',
+                            overlay: { errors: true },
+                        },
                         headers: {
                             'Access-Control-Allow-Origin': '*',
                             'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
                             'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
                         },
-                        contentBase: path.join(process.cwd(), './public'),
+                        static: {
+                            directory: path.join(process.cwd(), './public'),
+                        },
+                        setupMiddlewares: function (middlewares) {
+                            middlewares.unshift({
+                                name: 'morgan',
+                                middleware: morgan('short', {
+                                    stream: { write: (line) => logger.info(line.slice(0, line.length - 1)) },
+                                }),
+                            });
+                            return middlewares;
+                        },
                     },
                     userConfig.devServer,
                     userConfig.host && { host: userConfig.host },
-                    userConfig.https && { https: userConfig.https, port: 443 },
+                    userConfig.https && {
+                        port: 443,
+                        server: {
+                            type: 'https',
+                            options: userConfig.https === true ? {} : userConfig.https,
+                        },
+                    },
                     userConfig.port && { port: userConfig.port }
                 ),
             },
