@@ -8,7 +8,7 @@ export default {
     mode: 'site',
     title: 'packjs',
     logo: 'https://gw.alicdn.com/imgextra/i1/O1CN01VakELz1WkM2igLsv0_!!6000000002826-55-tps-456-90.svg',
-    favicon: 'https://gw.alicdn.com/imgextra/i1/O1CN01VakELz1WkM2igLsv0_!!6000000002826-55-tps-456-90.svg',
+    favicon: 'https://gw.alicdn.com/imgextra/i4/O1CN0186FJkv21ObK7MwvFO_!!6000000006975-55-tps-80-86.svg',
     navs: [
         null,
         {
