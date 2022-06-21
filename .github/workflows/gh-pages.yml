@@ -1,9 +1,7 @@
-name: github pages v1
+name: github pages
 
 on:
   push:
-    branches:
-      - v1
     paths:
       - 'docs/**'
       - 'public/**'
@@ -21,5 +19,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: v1
           publish_dir: ./dist

@@ -1,13 +1,10 @@
 ---
-nav:
-  title: 配置
-  order: 2
 toc: menu
 ---
 
 # 配置
 
-支持[webpack 全部配置](https://www.webpackjs.com/configuration/)和扩展配置，以下扩展配置项通过字母排序。
+v1支持[webpack 全部配置](https://www.webpackjs.com/configuration/)和扩展配置，以下扩展配置项通过字母排序。
 
 > 注意：本文关联的所有 npm 依赖，无需用户手动安装，packjs 会在项目运行编译时自动按需安装。
 

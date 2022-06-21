@@ -1,9 +1,6 @@
 ---
 title: FAQ
 order: 4
-nav:
-  title: 指南
-  order: 1
 ---
 
 ### 1. window npm run dev 执行错误

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="86px" viewBox="0 0 80 86" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>a</title>
+    <defs>
+        <linearGradient x1="50%" y1="2.52525253e-05%" x2="50%" y2="100.000025%" id="linearGradient-1">
+            <stop stop-color="#000000" stop-opacity="0.8" offset="6.138%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.302" offset="12.12%"></stop>
+            <stop stop-color="#000000" stop-opacity="0" offset="21.25%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="a" transform="translate(1.315344, 0.916000)" fill-rule="nonzero">
+            <g id="path118931">
+                <path d="M53.44,0 L31.563,0 L24.215,0 L7.515,0 L9.49285095e-14,84.168 L24.048,84.168 L26.72,53.941 L42.084,53.941 C64.963,53.941 77.154,41.249 77.154,24.549 C77.154,12.525 67.301,0 53.44,0 Z M43.42,35.905 L28.39,35.905 L30.06,18.036 L45.591,18.036 C49.766,18.036 53.273,22.378 53.273,26.052 C53.106,29.559 50.1,35.905 43.42,35.905 Z" id="形状" stroke="#3D3D3D" stroke-width="1.67" fill="#3D3D3D"></path>
+                <polygon id="路径" fill="url(#linearGradient-1)" opacity="0.45" points="5.845 18.036 29.893 18.036 24.048 84.168 1.89857019e-13 84.168"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
