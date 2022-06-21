@@ -6,16 +6,13 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"
     />
-    <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="https://gw.alicdn.com/tfs/TB1ILY9YUH1gK0jSZSyXXXtlpXa-742-996.png"
-    />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.svg" />
+    <link rel="stylesheet" href="/style.css" />
     <script>
       window.routerBase = "/";
     </script>
     <script>
-      //! umi version: 3.5.20
+      //! umi version: 3.5.26
     </script>
     <script src="https://www.googletagmanager.com/gtag/js?id=G-ZNJQM7Q9TP"></script>
     <script>
@@ -25,6 +22,32 @@
       }
       gtag("js", new Date());
       gtag("config", "G-ZNJQM7Q9TP");
+    </script>
+    <script>
+      const customInspect = function () {
+        const dom = document.createElement("span");
+        dom.id = "logo-version";
+        dom.innerHTML = "2.0.0-beta0";
+        const logo = document.querySelector(".__dumi-default-navbar-logo");
+        if (logo) {
+          logo.parentNode.insertBefore(dom, logo.nextSibling);
+
+          if (/\/v\d\//.test(location.href)) {
+            logo.onclick = function () {
+              location.href = location.href.replace(/(v\d\/)(.+)$/, "$1");
+            };
+          } else {
+            logo.onclick = function () {
+              location.href = "/v2";
+            };
+          }
+        } else {
+          setTimeout(() => {
+            customInspect();
+          }, 100);
+        }
+      };
+      customInspect();
     </script>
     <script>
       !(function () {
@@ -37,7 +60,7 @@
         );
       })();
     </script>
-    <title>介绍 - packjs</title>
+    <title>FAQ - packjs</title>
   </head>
   <body>
     <div id="root"></div>
