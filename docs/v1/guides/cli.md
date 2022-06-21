@@ -1,9 +1,6 @@
 ---
 title: 命令行
 order: 3
-nav:
-  title: 指南
-  order: 1
 ---
 
 # 命令

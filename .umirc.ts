@@ -1,26 +1,32 @@
 const packages = require('./package.json');
 
 export default {
-    base: '/',
     publicPath: `/`,
     exportStatic: {},
     dynamicImport: {},
     mode: 'site',
     title: 'packjs',
-    logo: 'https://gw.alicdn.com/imgextra/i1/O1CN01VakELz1WkM2igLsv0_!!6000000002826-55-tps-456-90.svg',
-    favicon: 'https://gw.alicdn.com/imgextra/i4/O1CN0186FJkv21ObK7MwvFO_!!6000000006975-55-tps-80-86.svg',
+    logo: '/logo.svg',
+    favicon: '/favicon.svg',
     navs: [
-        null,
+        {
+            title: '指南',
+            path: 'guides',
+        },
+        {
+            title: '配置',
+            path: 'configs',
+        },
         {
             title: '历史版本',
             children: [
                 {
                     title: 'v2.x',
-                    path: '/',
+                    path: '/v2/',
                 },
                 {
                     title: 'v1.x',
-                    path: 'https://v1.packjs.tagee.cc',
+                    path: '/v1/',
                 },
             ],
         },
@@ -34,20 +40,26 @@ export default {
         gtag('js', new Date());
         gtag('config', 'G-ZNJQM7Q9TP');`,
         `
-      const insertVersion = function(){
+      const customInspect = function(){
         const dom = document.createElement('span');
         dom.id = 'logo-version';
         dom.innerHTML = '${packages.version}';
         const logo = document.querySelector('.__dumi-default-navbar-logo');
         if(logo){
           logo.parentNode.insertBefore(dom, logo.nextSibling);
+          
+          if(/\\/v\\d\\//.test(location.href)){
+            logo.onclick=function(){location.href=location.href.replace(/(v\\d\\/)(.+)$/,"$1")}
+          }else{
+            logo.onclick=function(){location.href="/v2"}
+          }
         }else{
           setTimeout(()=>{
-            insertVersion();
-          }, 1000)
+            customInspect();
+          }, 100)
         }
       }
-      insertVersion();
+      customInspect();
       `,
     ],
 };

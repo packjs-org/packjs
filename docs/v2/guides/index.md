@@ -1,12 +1,9 @@
 ---
 title: 介绍
 order: 1
-nav:
-  title: 指南
-  order: 1
 ---
 
-### 什么是[packjs](https://www.npmjs.com/package/packjs)
+### v2什么是[packjs](https://www.npmjs.com/package/packjs)
 
 **packjs**是一个开箱即用的，基于 webpack 的智能化前端打包工具。
 
