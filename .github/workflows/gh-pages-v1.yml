@@ -1,7 +1,9 @@
-name: github pages
+name: github pages v1
 
 on:
   push:
+    branches:
+      - v1
     paths:
       - 'docs/**'
       - 'public/**'
@@ -17,6 +19,8 @@ jobs:
       - run: npm run docs:build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: v1
           publish_dir: ./dist

@@ -1,9 +1,9 @@
 {
   "name": "packjs",
-  "version": "1.4.0",
+  "version": "2.0.0-beta0",
   "description": "an intelligent module bundler",
   "keywords": [
-    "webpack",
+    "vite",
     "pack",
     "bundler"
   ],
@@ -21,6 +21,7 @@
     "prepublishOnly": "npm run clean && npm run format &&  npm run build && echo Using TypeScript && tsc --version",
     "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "build": "tsc --pretty",
+    "docs:preview": "dumi dev",
     "docs:build": "dumi build",
     "watch": "npm run build -- --watch",
     "test": "echo \"TODO\""
