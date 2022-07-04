@@ -13,6 +13,6 @@
 
    release v{{version}}
 
-   packjs is a intelligently and lightweight packaging tool
+   packjs is an intelligently and lightweight packaging tool
 
 ==============================================================
