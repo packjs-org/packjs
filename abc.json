@@ -1,9 +1,0 @@
-{
-  "assets": {
-    "type": "command",
-    "command": {
-      "cmd": ["tnpm install", "tnpm run web-build", "mv ./web $BUILD_DEST"]
-    }
-  }
-}
-

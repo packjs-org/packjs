@@ -8,6 +8,7 @@ export default {
     title: 'packjs',
     logo: '/logo.svg',
     favicon: '/favicon.svg',
+    locales: [['zh-CN', '中文']],
     navs: [
         {
             title: '指南',
@@ -17,21 +18,32 @@ export default {
             title: '配置',
             path: 'configs',
         },
-        {
-            title: '历史版本',
-            children: [
-                {
-                    title: 'v2.x',
-                    path: '/v2/',
-                },
-                {
-                    title: 'v1.x',
-                    path: '/v1/',
-                },
-            ],
-        },
-        { title: 'GitHub', path: 'https://github.com/tageecc/packjs' },
+        // {
+        //     title: '历史版本',
+        //     children: [
+        //         {
+        //             title: 'v2.x',
+        //             path: '/v2/',
+        //         },
+        //         {
+        //             title: 'v1.x',
+        //             path: '/v1/',
+        //         },
+        //     ],
+        // },
+        // { title: 'GitHub', path: 'https://github.com/tageecc/packjs' },
     ],
+    // menus: {
+    //     '*': [],
+    //     '/v2': [
+    //         { title: 'start', path: 'v2/guides/start.md' },
+    //         { title: 'faq', path: 'v2/guides/faq.md' },
+    //     ],
+    //     '/v2/guides/start': [
+    //         { title: 'start', path: 'v2/guides/start.md' },
+    //         { title: 'faq', path: 'v2/guides/faq.md' },
+    //     ],
+    // },
     links: [{ rel: 'stylesheet', href: '/style.css' }],
     headScripts: [
         'https://www.googletagmanager.com/gtag/js?id=G-ZNJQM7Q9TP',
